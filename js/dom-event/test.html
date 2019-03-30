@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>event</title>
+</head>
+<body>
+    <div id="obj1">
+        welcome
+        <h5 id="obj2">hello</h5>
+        <h5 id="obj3">world</h5>
+    </div>
+    <script type="text/javascript">
+        var obj1=document.getElementById('obj1');
+        var obj2=document.getElementById('obj2');
+        //阻止事件冒泡
+        // $("#div1").mousedown(function(event){
+        // event.stopPropagation();
+        //      });
+        obj1.addEventListener('click',function(){
+            alert('hello');
+        },false);
+        obj2.addEventListener('click',function(){
+            alert('world');
+        })
+        
+    </script>
+</body>
+</html>
