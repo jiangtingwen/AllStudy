@@ -1,0 +1,49 @@
+.weui-cells{
+    font-size: 17px;
+    line-height: 1.47058824;
+    background-color: #ffffff;
+     overflow: hidden;  /*子元素超出父元素就隐藏  */
+     position: relative;
+     margin-top: 1.17647059em;
+}
+/* border-top? border_bottom
+    border是盒子模型的一部分,不用border是因为他会占用盒子像素,空间，因此用伪元素
+*/
+.weui-cells:before{
+    /* 伪元素,不影响父元素的盒子模型 */
+    content: "";
+    /* 定位会让元素离开文档流 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    /* background-color: red; */
+    transform: scaleY(.5);     /*缩小0.5倍*/
+    transform-origin: 0 0;
+
+}
+.weui-cells:after{
+    content:"";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    border-bottom: 1px solid #e5e5e5;
+    transform: scaleY(0.5);
+    transform-origin: 0 100%;
+}
+.weui-cell{
+    padding: 10px 15px;
+    position: relative;    /*相对定位*/
+    display:flex;    /*弹性布局*/
+    align-items: center;/*纵轴居中*/
+
+}
+.weui-cell__bd{
+    flex:1;
+    
+
+}

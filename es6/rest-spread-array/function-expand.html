@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //es5 判断有没有传参
+        // function Person(nickNmae){
+        //     // if(!nickNmae){
+        //     //     nickNmae='未知昵称';
+        //     // }
+        //     this.nickNmae=nickNmae||'未知昵称';
+        // }
+        // const p1=new Person('nickName');
+        // //p1{nickName:'nickName'}
+        // const p2=new Person();
+        // //p2{nickName:'未知昵称'}
+
+        //es6
+        function Person(nickNmae='未知昵称'){
+           this.nickNmae=nickNmae;
+        }
+        const p1=new Person('nickName');
+        const p2=new Person();
+         
+         // ...叫做rest参数  形式（...变量名）
+         //获取多余的参数 变量名是数组，把多余的变量(...args)放入数组中
+         //...agrs必须放在最后,
+        function sum(a,...args){
+            // Array.from(arguments)
+            console.log(args);
+        }
+        sum(2,4,6,8,10);
+    </script>
+</body>
+</html>

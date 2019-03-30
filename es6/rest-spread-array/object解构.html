@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>object</title>
+</head>
+<body>
+    <script>
+        const obj={
+            name:'优秀',
+            age:32,
+            foo:{bar:'bar val'},
+            baz:['Hello',{msg:'world'}]
+        }
+        //es5
+        // var name=ogj.name;
+        // var age=obj.age;
+
+        //es6 对象解构时，和位置无关，属性名正确即可 
+        // const {age,name}=obj;
+        // const{age,name,foo:{bar}}=obj
+
+        // :赋值（将name赋值给this_name即再定义一个变量名）
+        const {
+            name:this_name,
+            age:this_age,
+            foo:{bar}, 
+            // baz:['Hello',{msg:'world'}]
+            baz:[hello,{msg:world}]
+            
+        } =obj;
+      
+    
+    </script>
+</body>
+</html>

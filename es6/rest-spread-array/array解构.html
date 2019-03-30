@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array</title>
+</head>
+<body>
+    <script>    
+        const lists=[
+            {name:'优秀1'},
+            {age:32 },
+            [{school:'东华理工'},{sex:'男'}]
+        ];
+        //我叫优秀1，我有32
+        //es5的做法
+        var nameObj=lists[0];
+        var ageObj=lists[1];
+
+        //数组 解构es6  a对应name,b对应age
+        // const [a,b]=lists;
+
+        // const [,,c] =lists;
+        const [,,[f,h]]=lists;
+        
+    </script>
+</body>
+</html>

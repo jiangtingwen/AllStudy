@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array</title>
+</head>
+<body>
+    <script>
+        const arr=[19,18,30,45];
+    //返回满足条件的第一个
+    //const this_age= arr.find(function(age){
+    // return age>18;
+    //     })
+    //     //过滤出所有年龄大于18的数
+    //     const this_ages=arr.filter(function(age){
+    //         return age>18;
+    //     })
+    // 找不到，返回空数组
+    //      const this_agess=arr.filter(function(age){
+    //     return age>90;
+    //      })
+    //  返回每一项都大于18的，满足则true，否则false
+    //   const this_every=  arr.every(age=>age>=18);
+    //  有一项满足年龄小于18则为true,否则为false
+           const this_some =  arr.some(age=>age<18);
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .flex-con{
+        display: flex;
+        width: 500px;
+        height: 500px;
+        background-color: #efefef;
+        margin: 0 auto;/*左右居中*/
+    }
+    .box{
+        height: 200px;
+        background-color: yellow;
+        flex: 1;/*等比例划分*/
+        /* 父元素是弹性的 子元素是固定的
+            有剩余的空间，也有可能超出 */
+        /* width: 200px; */
+        flex-basis: 200px;
+
+    }
+    .box1{
+        flex-grow: 1;/*用于分配多余的空间*/
+        flex-shrink: 1;/*缩小*/
+    }
+    .box2{
+        background-color: red;
+        /* flex-grow: 2; */
+        flex-shrink: 2;
+    }
+    .box3{
+        background-color: green;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="flex-con">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+</body>
+</html>
