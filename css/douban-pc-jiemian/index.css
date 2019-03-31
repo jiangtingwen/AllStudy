@@ -6,20 +6,122 @@ body{
     font: 12px Helvetica,Arial,sans-serif;
     line-height: 1.62;
 }
-#anony-nay{
+#annoy-nay{
         width: 950px;
         margin: 0px auto 25px ;
 
 }
-.anony-nay-links{
+.annoy-nay-links{
     float:right;
     margin-top: 6px;
-
 }
- li .movie{
+.annoy-nay-links li{
+    /* color: red; */
     display: inline-block;
+    font-size: 18px;
     margin: 0 0 0 17px;
-    font-size: 20px;
-    color: aquamarine;
+    width: 40px;
+    height: 22px;
+    line-height: 2em;
+    font-weight: bolder;
 }
+#annoy-nay h1{
+    color: green;
+    display: inline-block;
+    width: 160px;
+    height: 34px;
+    margin: 0 20px 0 0; 
+}
+#annoy-nay .annoy-srh{
+    top: 10px;
+    display: inline-block;
+    width: 270px;
+    height: 30px;
+    border: 1px solid #c3c3c3;
+    position: relative;
+    
+}
+.annoy-srh .inp{
+    display: block;
+    height: 30px;
+    overflow: hidden;
+}
+.annoy-srh .bn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: url(./images/search.png) 50% 50% no-repeat;
+    background-size: cover;
 
+ 
+}
+.bn input{
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border: none;
+        font-size: 0;
+        overflow: hidden;
+        cursor: pointer;
+        margin-right: 3px;
+        vertical-align: middle;
+        outline: medium;
+}
+.inp input{
+    display: block;
+    text-shadow: none;
+    width: 240px;
+    height: 20px;
+    padding: 5px;
+    font-size: 13px;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    border: none;
+    outline: medium;
+}
+#anony-reg-new{
+    margin-bottom: 25px;
+    background: url(https://img1.doubanio.com/view/puppy_image/raw/public/16874860437wq5ntbd7.jpg) no-repeat;
+    background-size: contain;
+    background-position:  calc(50%,-305px);
+    background-clip: #edf4ed;
+}
+#anony-reg-new .warpper{
+    width: 950px;
+    padding: 0 0 4px;
+    overflow: visible;
+    position: relative;
+
+
+}
+#anony-reg-new .warpper::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;z-index: 0;
+    background-repeat: no-repeat;
+    background-position: 0 -150px;
+
+}
+#anony-reg-new .warpper::after{
+    content: "\0020";
+    clear: both;
+    display: block;
+}
+#anony-reg-new .warpper .login{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    float: right;
+    letter-spacing: -.31em;
+}
