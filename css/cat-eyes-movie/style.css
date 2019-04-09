@@ -97,6 +97,8 @@ body {
   height: 4rem;
   border: 1px solid #f0f2f3;
   position: relative;
+  background-image: url("./image/header-bg.jpg");
+  background-size: cover;
 }
 .page .movie-header .movie .movie-container .movie-cover .link {
   cursor: pointer;
@@ -114,7 +116,7 @@ body {
   bottom: 0.1rem;
   width: 0.667rem;
   height: 0.667rem;
-  background-image: url("./images/bofang.png");
+  background-image: url("./image/bofang.png");
   background-size: 100% auto;
   border-radius: 100%;
   opacity: 0.7;
@@ -217,6 +219,88 @@ body {
 }
 .page .section-expander .text-expander .text-expander__button .icon-chevron__down.up {
   transform: rotateZ(-135deg);
+}
+.page .section-seperate .action-list {
+  padding-left: 0.3rem;
+  font-size: 20px;
+}
+.page .section-seperate .movie-celebrities {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.page .section-seperate .movie-celebrities li {
+  text-align: center;
+  display: inline-block;
+  padding: 0.04rem;
+}
+.page .section-seperate .movie-celebrities li .link {
+  color: #000;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic {
+  width: 1.7334rem;
+  height: 2.4rem;
+  margin: 0.05rem;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic img {
+  width: 100%;
+}
+.page .section-seperate .movie-celebrities li .link span {
+  display: block;
+  font-size: 0.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities-roles {
+  color: #999;
+}
+.page .movie-booking {
+  padding-bottom: 0.2rem;
+}
+.page .movie-booking .section-til {
+  font-size: 20px;
+}
+.page .movie-booking .weui-flex {
+  text-align: center;
+}
+.page .movie-booking .weui-flex .placeholder span {
+  font-size: 24px;
+  color: #d96a3d;
+}
+.page .movie-booking .weui-flex .placeholder p {
+  color: #bababa;
+  margin-top: 0.1rem;
+}
+.page .movie-photo .movie-photo__lists {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container {
+  margin-right: 0.1333rem;
+  display: inline-block;
+  width: 2.4rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic {
+  width: 100%;
+  height: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic img {
+  width: 100%;
+  height: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:first-child {
+  width: 3.334rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:last-child {
+  margin-right: 0;
 }
 #toast {
   display: none;

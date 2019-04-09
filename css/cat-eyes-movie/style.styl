@@ -83,6 +83,9 @@ html,body
           height 4rem
           border 1px solid #f0f2f3
           position relative
+          background-image url(./image/header-bg.jpg)
+          background-size cover
+          
           .link
             cursor pointer
             display block
@@ -97,7 +100,7 @@ html,body
             bottom 0.1rem
             width 0.667rem
             height 0.667rem
-            background-image url(./images/bofang.png)
+            background-image url(./image/bofang.png)
             background-size 100% auto
             border-radius 100%
             opacity .7
@@ -156,6 +159,8 @@ html,body
     padding-top 0.4rem
     margin-bottom 0.3rem
     border-top 1px solid #e5e5e5
+ 
+ 
   .section-expander
     padding-left 0.4rem
     padding-right 0.4rem
@@ -183,7 +188,78 @@ html,body
           
         .icon-chevron__down.up
           transform rotateZ(-135deg)
+  .section-seperate
+    .action-list 
+      padding-left .3rem
+      font-size 20px
+    .movie-celebrities
+      width 100%
+      padding 0.3rem 0.3rem 0.1rem 0.3rem
+      overflow-x scroll
+      white-space nowrap
+      box-sizing border-box
+      li
+        text-align center
+        display inline-block
+        padding 0.04rem
+        .link
+          color #000000
+          .movie-celebrities__pic
+            width 1.7334rem
+            height 2.4rem
+            margin  0.05rem
+            img
+              width 100%
+          span
+            display block
+            font-size 0.2rem
+            text-overflow ellipsis //超出打点
+            overflow hidden
+            white-space nowrap //不允许换行
+          .movie-celebrities-roles  
+            color #999999    
+  .movie-booking
+    padding-bottom 0.2rem
+    .section-til
+      font-size 20px
+    .weui-flex
+      text-align center
+      .placeholder
+        span
+          font-size 24px
+          color #d96a3d
+        p
+          color #bababa
+          margin-top 0.1rem
+  .movie-photo
+    .movie-photo__lists
+      width 100%
+      padding .3rem .3rem .2rem .3rem
+      overflow-x scroll
+      white-space nowrap
+      box-sizing border-box
+      .stage-img-container
+        margin-right .1333rem
+        display inline-block
+        width 2.4rem
+        height 1.867rem
+        .movie-celebrities__pic
+          width 100%
+          height 100%
+          img
+            width 100%
+            height 100%
+        &:first-child
+          width 3.334rem
+          height 1.867rem
+        &:last-child
+          margin-right 0
+          
+
+
+
+
 
 #toast
   display none
-              
+            

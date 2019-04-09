@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+}
+.page {
+  width: 100%;
+  padding-top: 3rem;
+  background: url("./images/icons/bgc.jpg");
+}
+.page .container {
+  width: 100%;
+}
+.page .container .top {
+  margin-bottom: 1.4rem;
+  padding-left: 1rem;
+  box-sizing: border-box;
+}
+.page .container .top .top-title {
+  position: relative;
+  margin-left: 2rem;
+  margin-right: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+.page .container .top .top-title .top-title-liebiao {
+  background: url("./images/icons/liebiao.png") no-repeat;
+  background-size: cover;
+  margin-right: 6.5rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  float: left;
+}
+.page .container .top .top-title .top-title-detail {
+  display: inline-block;
+  margin-right: 3rem;
+}
+.page .container .top .top-title .top-title-detail li {
+  display: inline-block;
+  position: relative;
+  top: -0.5rem;
+  margin-right: 4rem;
+  font-size: 2rem;
+  color: #fff;
+}
+.page .container .top .top-title .top-title-add {
+  background: url("./images/icons/add.png");
+  width: 1.7rem;
+  height: 1.7rem;
+  background-size: cover;
+  position: absolute;
+  top: 0rem;
+  right: 0.1rem;
+}
+.page .container .top .top-search {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+.page .container .top .top-search .ipt input {
+  display: inline-block;
+  width: 38.5rem;
+  height: 3.2rem;
+  border-radius: 4rem;
+  background-color: #011717;
+}
+.page .container .top .top-search .btn input {
+  display: block;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 10.5rem;
+  top: 1rem;
+  background-color: transparent;
+  font-size: 0px;
+  border: none;
+  cursor: pointer;
+}
+.page .container .msg {
+  width: 100%;
+  padding: 1.3rem 2.5rem 1.3rem 1.8rem;
+  box-sizing: border-box;
+}
+.page .container .msg .msg-detail {
+  position: relative;
+}
+.page .container .msg .msg-detail .msg-pic {
+  background: url("./images/icons/touxiang.jpg");
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  background-size: cover;
+}
+.page .container .msg .msg-detail .msg-personal {
+  display: inline-block;
+  margin-left: 1.4rem;
+  position: absolute;
+  top: 1.4rem;
+}
+.page .container .msg .msg-detail .msg-personal .msg-vip {
+  display: inline-block;
+}
+.page .container .msg .msg-detail .msg-personal .msg-vip .msg-vip-name {
+  font-size: 1rem;
+  color: #fff;
+  width: 8.9rem;
+  height: 1.5rem;
+  margin-right: 0.7rem;
+}
+.page .container .msg .msg-detail .msg-personal .msg-vip .msg-vip-start {
+  border-radius: 20px;
+  background-color: #cfe677;
+  width: 4.8rem;
+  height: 1.6rem;
+  display: inline-block;
+}
+.page .container .msg .msg-detail .msg-personal .msg-listen .msg-listen-level {
+  background-color: #d8cd86;
+  width: 2.7rem;
+  height: 1.3rem;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 1rem;
+}
+.page .container .msg .msg-detail .msg-personal .msg-listen .msg-listen-time {
+  display: inline-block;
+  width: 8.3rem;
+  height: 1.4rem;
+  background-color: #fff;
+  opacity: 0.5;
+  margin-right: 1rem;
+}
+.page .container .msg .msg-detail .msg-personal .msg-listen .msg-listen-id {
+  width: 4.8rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #00dad9;
+}
+.page .container .msg .msg-detail .msg-personal .msg-listen .msg-listen-id .id {
+  color: #fff;
+}
+.page .container .msg .msg-detail .msg-message {
+  width: 2.5rem;
+  height: 2rem;
+  position: absolute;
+  right: 0rem;
+  top: 1.8rem;
+  opacity: 0.7;
+  background: url("./images/icons/xiaoxi.png");
+  background-size: cover;
+  display: inline-block;
+}
+.page .container .msg .msg-icons {
+  width: 100%;
+  padding-left: 2.1rem;
+  margin-top: 1.5rem;
+  box-sizing: border-box;
+}
+.page .container .msg .msg-icons .local-music {
+  display: inline-block;
+}
+.page .container .msg .msg-icons .local-music .local-music-img {
+  background: url("./images/icons/bendiyinle.png");
+  width: 2.3rem;
+  height: 2.3rem;
+  background-size: cover;
+  margin-right: 7.2rem;
+}
+.page .container .msg .msg-icons .local-music .local-music-dec {
+  margin-top: 1.3rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.page .container .msg .msg-icons .local-music .local-music-num {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  color: #fff;
+  margin-left: 0.5rem;
+}
+.page .container .msg .msg-icons .my-collect {
+  display: inline-block;
+}
+.page .container .msg .msg-icons .my-collect .my-collect-img {
+  background: url("./images/icons/shoucang.png");
+  background-size: cover;
+  width: 3rem;
+  height: 2.7rem;
+  margin-right: 7.2rem;
+}
+.page .container .msg .msg-icons .my-collect .my-collect-dec {
+  margin-top: 1.3rem;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: #fff;
+}
+.page .container .msg .msg-icons .my-collect .my-collect-num {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  color: #fff;
+  margin-left: 1rem;
+}
+.page .container .msg .msg-icons .dowload {
+  display: inline-block;
+}
+.page .container .msg .msg-icons .dowload .download-img {
+  background: url("./images/icons/xiazai.png");
+  background-size: cover;
+  width: 2.7rem;
+  height: 2.7rem;
+  margin-right: 7.2rem;
+}
+.page .container .msg .msg-icons .dowload .download-dec {
+  margin-top: 1.3rem;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: #fff;
+}
+.page .container .msg .msg-icons .dowload .download-num {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  margin-left: 1rem;
+  color: #fff;
+}
+.page .container .msg .msg-icons .arround-play {
+  display: inline-block;
+}
+.page .container .msg .msg-icons .arround-play .arround-play-img {
+  background: url("./images/icons/zuijinbofang.png");
+  background-size: cover;
+  width: 2.9rem;
+  height: 2.9rem;
+}
+.page .container .msg .msg-icons .arround-play .arround-play-dec {
+  margin-top: 1.3rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #fff;
+  position: relative;
+  right: 0.6rem;
+}
+.page .container .msg .msg-icons .arround-play .arround-play-num {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  right: 0.6rem;
+}
