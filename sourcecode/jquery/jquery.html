@@ -10,13 +10,19 @@
     <div id="root"></div>
 <!-- <script src="https://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script> -->
 <script>
+    function JQueryEle(ele){
+        this.ele=ele;
+    }
+    JQueryEle.prototype.html=function(str){
+        this.ele.innerHTML=str;
+    }
     //jquery太好用了，兼容性 抹平了浏览器间的差异+快
     //js 里 函数可以作为参数，高阶函数
     function $(selector){
         //DOM Ready事件
         //查找元素
         if(typeof selector==='string'){
-            
+            return str;
         }else if(typeof selector==='function'){
             document.addEventListener('DOMContentLoaded',selector,false);
         }

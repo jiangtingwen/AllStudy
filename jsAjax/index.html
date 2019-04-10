@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jQuery Ajax 源码</title>
 </head>
+
 <body>
     <script>
         var xhr = null
-        if(window.XMLHttpRequest){
+        if (window.XMLHttpRequest) {
             xhr = new XMLHttpRequest()
-        }else {
+        } else {
             xhr = new ActiveXObject("Microsoft.XMLHTTP")
         }
-        xhr.open('get','./mock.json',true)//true异步 false同步
+        xhr.open('get', './mock.json', true)//true异步 false同步
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded")
         xhr.send()
         //console.log(xhr.readyState,xhr.status)//状态值，状态码
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                // 成功
-                console.log(xhr.responseText)
+        var p = new Promise((resolve, reject) => {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 成功
+                    console.log(xhr.responseText)
+                    resolve(xhr.responseText)
+                }
             }
+        })
+        function xq() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('猛哥要相亲了')
+                    resolve('相亲很顺利')
+                }, 1000)
+            })
+
+
         }
-        console.log(123321)
+        // xq();
+        function marry() {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                console.log('猛哥结婚了')
+                resolve('结婚后一年')
+            },3000)
+            })
+        }
+        //生小孩
+        function bornChild(){
+            setTimeout(()=>{
+                console.log('猛哥生小孩了')
+            },1000)
+            
+        }
+        //取到生辰八字后，再執行相親事件
+        p
+            .then(xq)
+            .then(marry)
+            .then(bornChild)
+            .catch(() => {
+                console.log('抛出异常')
+            })//没有取到生辰八字，捕捉错误信息
     </script>
 </body>
 <html>
