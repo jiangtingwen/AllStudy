@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
+
 <body>
   <header class="nav">
     <i class="arrow-left"></i>
@@ -101,20 +103,26 @@
     <!-- section4 -->
     <section class="movie-booking section-seperate section-expander">
       <p class="section-til">票房</p>
-        <div class="weui-flex">
-        <div class="weui-flex__item"><div class="placeholder">
-          <span class="ranking">11</span>
-          <p>昨日票房排行</p>
-        </div></div>
-        <div class="weui-flex__item"><div class="placeholder">
-          <span class="bookingWeek">kk</span>
-          <p>首周票房(万)</p>
-        </div></div>
-        <div class="weui-flex__item"><div class="placeholder">
-          <span class="bookingTotal">ll</span>
-          <p>累计票房(万)</p>
-        </div></div>
-    </div>
+      <div class="weui-flex">
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span class="ranking">11</span>
+            <p>昨日票房排行</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span class="bookingWeek">kk</span>
+            <p>首周票房(万)</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span class="bookingTotal">ll</span>
+            <p>累计票房(万)</p>
+          </div>
+        </div>
+      </div>
 
 
     </section>
@@ -130,7 +138,63 @@
                 </div>
           </a>
         </li> -->
-      </ul>  
+      </ul>
+    </section>
+    <!-- section6 -->
+    <section class="section-seperate section-expander">
+      <p class="section-til pos_r">讨论
+        <span class="join-comment">参与讨论</span>
+      </p>
+      <ul class="movie-comment">
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>全部</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>好评</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>差评</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>点映</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>购票</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>认证作者</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>同城</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+      </ul>
+
+    </section>
+    <!-- section7 -->
+    <section class="section-seperate section-expander">
+        <p class="section-til">精选</p>
+
     </section>
     <!-- toast -->
     <div id="toast">
@@ -142,69 +206,69 @@
     </div>
   </div>
   <script>
-        (function(){
-          $.ajax({
-            url: 'https://www.easy-mock.com/mock/5ca2c29464930718b239eb94/lm/lvmeng/myMovie-demo',
-            type: 'get',
-            success:function(res){
-              console.log(res)
-              $('#moviePic').attr('src', res.data.moviePic)
-              $('.movie-content .movie-name span').html(res.data.name)
-              $('.movie-content .movie-ename span').html(res.data.nameEnglish)
-              star(res.data.star)
-              $('.rating-score').html(res.data.grade)
-              $('.score-num span').html(res.data.people)
-              $('.movie-type').html(res.data.type)
-              $('.address-time .address').html(res.data.where)
-              $('.address-time .time').html(res.data.time)
-              $('.movie-detail .date').html(res.data.date)
-              $('.text-expander__content p').html(res.data.desc)
-              $('.movie-booking .ranking').html(res.data.booking.ranking)
-              $('.movie-booking .bookingWeek').html(res.data.booking.bookingWeek)
-              $('.movie-booking .bookingTotal').html(res.data.booking.bookingTotal)
-              celebrity(res.data.person)
-              photo(res.data.pictures)
-            }
-          })
-          function star(e){
-            let num = Math.floor(e)
-            if (e > num) {
-              $('#rating').prepend('<img class="img" src="./image/star-h.png">')
-            }
-            for (let i = 0; i < num; i++) {
-              $('#rating').prepend('<img class="img" src="./image/star.png">')
-            }
-          }
-    
-          $('#movie-watch').click(function(){
-            if ($(this).hasClass('active')) {
-              $('#movie-watch').removeClass('active')
-              $('#movie-watch img').attr('src', './image/heart.png')
-              $('#toast .weui-toast__content').html('已取消想看')
-            } else {
-              $('#movie-watch').addClass('active')
-              $('#movie-watch img').attr('src', './image/heart1.png')
-              $('#toast .weui-toast__content').html('已标记为想看')
-            }
-            $('#toast').css('display', 'block')
-            setTimeout(() => {
-              $('#toast').css('display', 'none')
-            },1500)
-          })
-          // 收放详情
-          $('#text-expander').on('click', function(){
-            if ($('.text-expander__content').hasClass('close')) {
-              $('.text-expander__content').removeClass('close')
-              $('.icon-chevron__down').addClass('up')
-            } else {
-              $('.text-expander__content').addClass('close')
-              $('.icon-chevron__down').removeClass('up')
-            }
-          })
-          //演员表
-          function celebrity(e){
-            for(let n of e){
-                $('.movie-celebrities').append(`<li>
+    (function () {
+      $.ajax({
+        url: 'https://www.easy-mock.com/mock/5ca2c29464930718b239eb94/lm/lvmeng/myMovie-demo',
+        type: 'get',
+        success: function (res) {
+          console.log(res)
+          $('#moviePic').attr('src', res.data.moviePic)
+          $('.movie-content .movie-name span').html(res.data.name)
+          $('.movie-content .movie-ename span').html(res.data.nameEnglish)
+          star(res.data.star)
+          $('.rating-score').html(res.data.grade)
+          $('.score-num span').html(res.data.people)
+          $('.movie-type').html(res.data.type)
+          $('.address-time .address').html(res.data.where)
+          $('.address-time .time').html(res.data.time)
+          $('.movie-detail .date').html(res.data.date)
+          $('.text-expander__content p').html(res.data.desc)
+          $('.movie-booking .ranking').html(res.data.booking.ranking)
+          $('.movie-booking .bookingWeek').html(res.data.booking.bookingWeek)
+          $('.movie-booking .bookingTotal').html(res.data.booking.bookingTotal)
+          celebrity(res.data.person)
+          photo(res.data.pictures)
+        }
+      })
+      function star(e) {
+        let num = Math.floor(e)
+        if (e > num) {
+          $('#rating').prepend('<img class="img" src="./image/star-h.png">')
+        }
+        for (let i = 0; i < num; i++) {
+          $('#rating').prepend('<img class="img" src="./image/star.png">')
+        }
+      }
+
+      $('#movie-watch').click(function () {
+        if ($(this).hasClass('active')) {
+          $('#movie-watch').removeClass('active')
+          $('#movie-watch img').attr('src', './image/heart.png')
+          $('#toast .weui-toast__content').html('已取消想看')
+        } else {
+          $('#movie-watch').addClass('active')
+          $('#movie-watch img').attr('src', './image/heart1.png')
+          $('#toast .weui-toast__content').html('已标记为想看')
+        }
+        $('#toast').css('display', 'block')
+        setTimeout(() => {
+          $('#toast').css('display', 'none')
+        }, 1500)
+      })
+      // 收放详情
+      $('#text-expander').on('click', function () {
+        if ($('.text-expander__content').hasClass('close')) {
+          $('.text-expander__content').removeClass('close')
+          $('.icon-chevron__down').addClass('up')
+        } else {
+          $('.text-expander__content').addClass('close')
+          $('.icon-chevron__down').removeClass('up')
+        }
+      })
+      //演员表
+      function celebrity(e) {
+        for (let n of e) {
+          $('.movie-celebrities').append(`<li>
                 <a href="#" class="link">
                   <div class="movie-celebrities__pic">
                     <img src="${n.avatal}" alt="">
@@ -213,23 +277,23 @@
                   <span class="movie-celebrities-roles">${n.sort}</span>
                 </a>
               </li>`)
-            }
-          }
-          //剧照
-          function photo(e){
-            for(let n of e){
-              $('.movie-photo__lists').append(`<li class="stage-img-container">
+        }
+      }
+      //剧照
+      function photo(e) {
+        for (let n of e) {
+          $('.movie-photo__lists').append(`<li class="stage-img-container">
                   <a href="#" class="link">
                   <div class="movie-celebrities__pic">
                   <img src="${n}" alt="">
                 </div>
           </a>
         </li>`)
-            }
+        }
 
-          }
-        })()
-      </script>
-    </body>
-    </html>
-    
+      }
+    })()
+  </script>
+</body>
+
+</html>
