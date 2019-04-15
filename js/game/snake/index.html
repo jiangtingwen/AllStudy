@@ -19,32 +19,82 @@
                      {x:120,y:150},
                      {x:110,y:150}
     ];  
+        // 创建食物对象
+       let food = {
+           x:200,
+           y:150,
+       }
+      
         let dx=10,dy=0;
         const gameCanvas = document.getElementById('gameCanvas');
         const ctx = gameCanvas.getContext('2d');
+       
         clearCanvas();//每次重置画布
         // 画蛇
+        drawFood();
         drawSnake();
-        setInterval(()=>{
+      
+       setInterval(()=>{
         moveSnake();
         clearCanvas();
         drawSnake();
+        
         },100)
+      
         
         function drawSnake(){
             snake.forEach(drawSnakePart);
+            
+             
         }
         function drawSnakePart(part){
             ctx.fillStyle = 'lightgreen';
             ctx.strokeStyle='darkgreen';
             ctx.fillRect(part.x,part.y,10,10);
             ctx.strokeRect(part.x,part.y,10,10);
+            
         }
+        // //构造函数创建食物
+        // function Food(width,height){
+        //     this.width=width;
+        //     this.height=height;
+        // }
+         //画食物
+         function drawFood(){
+            food.x = parseInt(Math.random() * 20) * 15;
+        	food.y = parseInt(Math.random() * 20) * 15;
+            ctx.fillStyle='red';
+            ctx.fillRect(food.x,food.y,10,10);
+            // ctx.save();
+            
+        }
+        //判断食物是否被吃
+        function IsEat(){
+            if(snake[0].x==food.x&&snake[0].y==food.y){
+                snake.push(food);
+                
+                return 1;
+
+            }else{
+                return 0;
+            }
+            
+        }
+        
         function moveSnake(){
+            
            const head = {x:snake[0].x+dx,y:snake[0].y+dy};
            snake.unshift(head);
            snake.pop();
-
+         
+           //判断蛇头是否出边界,
+           if(snake[0].x>290||snake[0].x<0||snake[0].y<0||snake[0].y>290){
+                alert('failed');
+                setInterval();
+               }
+               
+              
+            
         }
         function clearCanvas() {
             ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
@@ -63,6 +113,7 @@
             const goingLeft=dx===-10;
             const goingUP=dy===-10;
             const goingDown=dy===10;
+
             if(keyCode===LEFT_KEY&&!goingRight){
                 dx=-10;
                 dy=0;
@@ -78,11 +129,16 @@
             if(keyCode===DOWN_KEY&&!goingUP){
                 dx=0;
                 dy=10;
-            }
-
+            } 
+          
         }
-
         document.addEventListener('keydown',changeDircetion)
+       
+       
+        
+        
+       
+        
     </script>
 </body>
 
