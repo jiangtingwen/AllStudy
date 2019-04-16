@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 鉴于两个整数a和b，可以是正的或负，找到所有包括他们太多并返回它的数字的总和。如果两个数字相等则返回a或b。
+
+        注意： a并b没有订购！
+        
+        例子
+        GetSum(1, 0) == 1   // 1 + 0 = 1
+        GetSum(1, 2) == 3   // 1 + 2 = 3
+        GetSum(0, 1) == 1   // 0 + 1 = 1
+        GetSum(1, 1) == 1   // 1 Since both are same
+        GetSum(-1, 0) == -1 // -1 + 0 = -1
+        GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2 -->
+    <script>
+        //一般解法
+        // function GetSum(a,b){
+        //     var sum = 0;
+        //     var min = a > b ? b:a;
+        //     var max = a > b ? a:b;
+        //     for(let i = min;i<=max;i++){
+        //         sum+=i  
+        //     }
+        //     return sum
+           
+        // }
+
+
+      //ES6解法
+
+     const GetSum = (a,b)=>{
+          let min = Math.min(a,b),
+              max = Math.max(a,b);
+              return (max-min+1)*(max+min)/2;
+      }
+        
+    </script>
+</body>
+</html>
