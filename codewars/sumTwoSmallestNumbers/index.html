@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dd</title>
+</head>
+
+<body>
+    <script>
+
+        function sumTwoSmallestNumbers(numbers) {
+            //方法1
+            //     var smallestNumber = 0,
+            //         secondSmallest = 0;
+
+            //     smallestNumber = Math.min(numbers[0], numbers[1]);
+            //     secondSmallest = Math.max(numbers[0], numbers[1]);
+
+            //     for (var index = 2; index < numbers.length; index++) {
+            //         if (numbers[index] < smallestNumber) {
+            //             secondSmallest = smallestNumber;
+            //             smallestNumber = numbers[index];
+            //         } else if (numbers[index] < secondSmallest) {
+            //             secondSmallest = numbers[index];
+            //         }
+            //     }
+
+            //     return (smallestNumber + secondSmallest);
+            //方法2
+            numbers = numbers.sort(function (a, b) { return a - b; }); //做升序排列
+            return numbers[0] + numbers[1];
+            
+        }
+        sumTwoSmallestNumbers([111, 5, 88, 47]);
+    </script>
+</body>
+
+</html>
