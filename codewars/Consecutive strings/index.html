@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 您将获得一个strarr字符串数组和一个整数k。您的任务是返回第一个最长的字符串，该字符串由数组中的k 个连续字符串组成。
+
+        例：
+        longest_consec（[“zone”，“abigail”，“theta”，“form”，“libe”，“zas”，“theta”，“abigail”]，2） - >“abigailtheta”
+        
+        n是串数组的长度，如果n = 0或k > n或k <= 0返回“”。
+        
+        注意
+        连续的字符串：一个接一个地跟随而不中断 -->
+
+    <script>
+
+        function longestConsec(strarr, k) {
+            // your code
+            if(k>strarr.length||k<=0){
+                    return "";
+            }else{
+                for (let i =0;i<strarr.length;i++){
+                        
+                     arr = strarr[i].split("");
+                    max = Math.max(arr[1].length,arr[0].length);
+                    maxs = Math.min(arr[1].length,arr[0].length);
+                    if(arr[i].length>max){
+                        maxs = max;
+                        arr[i].length=max
+                    }else if(arr[i].length>maxs){
+                            maxs = arr[i].length;
+
+                    }   
+                }
+
+                return maxs+max;
+            }
+            
+        }
+        longestConsec(["aasss","ssss","aaa","rrrrrraaa"],4);
+        console.log(max+maxs);
+    </script>
+
+</body>
+
+</html>

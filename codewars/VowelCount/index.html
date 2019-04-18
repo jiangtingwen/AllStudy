@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 返回给定字符串中元音的数量（计数）。
+
+我们将把a，e，i，o和u视为这个Kata的元音。
+
+输入字符串仅包含小写字母和/或空格。 -->
+
+<body>
+    <script>
+
+
+        function getCount(str) {
+             vowelsCount = 0;
+          var   arr = str.split("");
+         
+
+            // enter your majic here
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'o' || arr[i] == 'u' || arr[i] == 'i') {
+                    vowelsCount++;
+                }
+
+            }
+            return vowelsCount;
+         
+        } 
+        getCount("asdsdhjdsaaaoooii");
+
+        console.log(vowelsCount);
+    </script>
+</body>
+
+</html>
