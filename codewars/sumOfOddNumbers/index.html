@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 给定连续奇数的三角形：
+
+             1
+          3     5
+       7     9    11
+   13    15    17    19
+21    23    25    27    29
+...
+            ...
+            从行索引（从索引1开始）计算此三角形的行和，例如：
+
+            rowSumOddNumbers(1); // 1
+            rowSumOddNumbers(2); // 3 + 5 = 8 -->
+    <script>
+        function sumOfOddNumbers(n) {
+            //方法一
+            //     sum=0;
+            //    if(n == 1){
+            //        sum=1;
+            //        return sum;
+            //    } else{
+            //        for(let i = (n*n-n+1);i<=(n*n+n-1);i++){
+            //            if(i%2!=0){
+            //                 sum+=i;
+            //            }
+            //        }
+            //    }
+            //    return sum;
+            //方法2
+            return Math.pow(n, 3);//===n*n*n   n为底数，3为幂
+        }
+        sumOfOddNumbers(3);
+        console.log(sum);
+
+    </script>
+
+
+</body>
+
+</html>
