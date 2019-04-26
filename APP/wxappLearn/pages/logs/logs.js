@@ -1,15 +1,11 @@
-// pages/mine/index.js
+// pages/logs/logs.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    people:[
-      {name:'猛哥'},
-      {name:'喻导'},
-      {name:'蜗牛'},
-    ]
+
   },
 
   /**
