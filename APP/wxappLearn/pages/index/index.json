@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  
+  "usingComponents": {
+    "tabbar":"../../components//tabber/index"
+  },
+  "enablePullDownRefresh":true,
+  "onReachBottomDistance":100
 }
