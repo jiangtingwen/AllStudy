@@ -1,0 +1,28 @@
+<view class="container">
+    <view class="location">
+        <view class="location-city">南昌</view>
+        <input type="text" class="location-input" bindinput="searchInput" placeholder="你要在哪上车" value="{{value}}" />
+        <navigator url="/pages/index/index">
+            <view class="location-cancel">取消</view>
+        </navigator>
+    </view>
+    <view class="addressList">
+        <scroll-view scroll-with-animation="{{true}}">
+            <view class="destination" wx:for="{{address}}"
+            data-destination="{{item.title}}"
+            data-end="{{item.address}}"
+            wx:key="{{item.id}}"
+            bindtap="toIndex">
+                <view class="destination-content">
+                    <view class="content-image">
+                        <image src="../../assets/images/clock.png" />
+                    </view>
+                    <view class="content">
+                        <view class="content-name">{{item.title}}</view>
+                        <view class="content-detail">{{item.address}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
