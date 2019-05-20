@@ -1,0 +1,15 @@
+const a = 1,
+      b = 2,
+      c = a + b;
+      console.log(c);
+      
+
+    //   [1,2,3].map(item =>`${item}item`);
+
+    // //   es6的大部分功能，其实es5也是能实现的，只不过不够优雅
+    //   let xlz = {name:'欧阳兴华',hometown:'硅谷'};
+    //   xlz = {...xlz,"company":'facebook'};
+    //   console.log(xlz);
+
+
+      
