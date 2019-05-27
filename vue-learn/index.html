@@ -19,7 +19,7 @@
         </ul> -->
         <!-- <p>{{content}}</p>
         <input type="text" v-model="content"> -->
-        <p class="coll" v-on:click="reverseMsg">jieshixu很帅</p>
+        <p class="coll" v-on:click="reverseMsg">{{msg}}</p>
     </div>
     <script>
         var app = new Vue({
@@ -34,10 +34,10 @@
                 //     {text: '写项目'},
                 //     {text: '学习react'},
                 // ]
-                msg:'jieshixu很帅',
-                 content:'' 
+                msg:'超人不会飞',
+                content:''   
             },
-            method:{
+            methods:{
                 reverseMsg(){
                     this.msg = this.msg.split('').reverse().join('')
                 }
