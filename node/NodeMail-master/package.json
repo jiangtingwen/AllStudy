@@ -1,0 +1,20 @@
+{
+  "name": "node-mail",
+  "version": "1.0.0",
+  "description": "自从用邮箱注册了很多账号后，便会收到诸如以下类似的邮件,刚开始还以为是一张图片，后来仔细一看不是图片呀，好像还是HTML呀，于是好奇宝宝我Google一下，查阅多篇资料后总结出怎么用前端知识和Node做一个这样的“邮件网页”。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "ejs": "^2.6.1",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^4.7.0",
+    "schedule": "^0.5.0",
+    "superagent": "^3.8.3"
+  },
+  "keywords": []
+}
