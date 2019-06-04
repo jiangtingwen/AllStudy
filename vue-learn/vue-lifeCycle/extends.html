@@ -11,7 +11,7 @@
 
 <body>
     <div id="app">
-        <div class="msg">{{message}}</div>
+        <div class="msg">${message}</div>
         <div class="btn">
             <button @click="add">add</button>
         </div>
@@ -42,8 +42,9 @@
                     console.log('我是原生的方法')
                 }
             },
-            extends: ext   //用来扩展外部方法的属性
+            extends: ext,   //用来扩展外部方法的属性
                            //如果扩展的方法跟methods里面的方法同名的话，则不生效
+            delimiters:['${','}']  //修改默认的插值符号 {{}}
         })
     </script>
 </body>
