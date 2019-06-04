@@ -13,6 +13,7 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  //钩子函数
   beforeRouteEnter:(to,from,next)=>{
      console.log(from,to)
      next()
