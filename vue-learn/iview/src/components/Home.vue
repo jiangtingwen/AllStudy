@@ -2,11 +2,14 @@
   <div class="home">
     <div class="layout">
       <Row type="flex">
-        <Col :span="spanLeft" class="layout-menu-left">
+        <i-Col :span="spanLeft" class="layout-menu-left">
           <div class="layout-logo-left">
             <span class="layout-text">Admin 管理系统</span>
           </div>
-          <Menu theme="dark">
+          <Menu theme="dark"
+            mode="vertical"
+            width="auto"
+          >
             <Submenu name="1">
               <template slot="title">
                 <Icon type="ios-paper"/>内容管理
@@ -37,8 +40,8 @@
               </MenuGroup>
             </Submenu>
           </Menu>
-        </Col>
-        <Col :span="spanRight">
+        </i-Col>
+        <i-Col :span="spanRight">
           <div class="layout-header">
             <Button type="text">
               <Icon type="md-menu" size="32"/>
@@ -53,15 +56,23 @@
               </Dropdown>
             </div>
           </div>
-        </Col>
+          <Breadcrumb>
+            <BreadcrumbItem to="/table">首页</BreadcrumbItem>
+            <BreadcrumbItem to="/table/manage">Components</BreadcrumbItem>
+          </Breadcrumb>
+          <div class="layout-content">
+            <div class="layout-content-main">
+              <router-view></router-view>
+            </div>
+          </div>
+        </i-Col>
       </Row>
     </div>
   </div>
-
-  
 </template>
 
 <script>
+
 export default {
   name: "Home",
   data() {
@@ -71,6 +82,7 @@ export default {
       userName: ''
     };
   },
+ 
   created() {
     this.userName = JSON.parse(sessionStorage.getItem('user'))
   },

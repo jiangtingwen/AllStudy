@@ -1,0 +1,122 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    
+}
+.content{
+    padding-left: 40%;
+    width: 100%;
+    height: 100%;
+    background: url(./images/ac4bd11373f082025b4249ed4afbfbedaa641b0b.jpg);
+    
+}
+.logo{
+    position: relative;
+    width: 110px;
+    height: 110px;
+    left: 100px;
+    overflow: hidden;
+    
+    background: url(./images/2\ 多啦a梦-01.png);
+    background-size: cover;
+    margin-bottom: 22px;
+    
+}
+.zhuceAndLogin{
+    width: 372px;
+    height: 50px;
+    display: inline-block;
+    
+}
+.login{
+    width: 176px;
+    height: 50px;
+    display: inline-block;
+    background-color: #b88773;
+    text-align: center;
+    /* margin: 0 auto; */
+    line-height: 50px;
+    font-size: 20px;
+}
+.zhuce{
+    width: 176px;
+    height: 50px;
+    display: inline-block;
+    background-color: #dc603f;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    
+}
+.user,.password{
+    width: 352px;
+    height: 50px;
+    left: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    
+
+}
+#txt ,#psd{
+    font-size: 20px;
+    float: right;
+    
+
+}
+.icon1{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    top: 42px;
+    left: -3px;
+    background: url(./images/xingmingyonghumingnicheng.png) no-repeat;
+    background-size: cover;
+}
+.icon2{
+    position: relative;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    top: 44px;
+    left: -3px;
+    background: url(./images/mima.png) no-repeat;
+    background-size: cover;
+}
+.jizhu,.wangji{
+    color: #fff;
+    display: inline-block;
+    position: relative;
+}
+.jizhu{
+    left: 48px;
+    top: 0px;
+}
+.wangji{
+    left: 204px;
+    top: 0px;
+}
+.icon3{
+    background:url(./images/check.png) no-repeat;
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    left: 28px;
+    top: -37px;
+}
+.btn{
+    
+    width: 352px;
+    height: 50px;
+}
+.anniu{
+        font-size: 30px;
+        /* position: relative; */
+        /* left: 130px; */
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #ec453e;
+}
+

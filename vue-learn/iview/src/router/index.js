@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import HelloWorld from '@/components/HelloWorld'
-
+import Index from '@/components/detail/Index'
 Vue.use(Router)
 
 export default new Router({
@@ -16,11 +16,14 @@ export default new Router({
     {
       path:'/table',
       name:'Home',
-      component:Home,
-      child:[
-        
+      component: Home,
+      children:[
+         {
+           path:'/',
+           name:'Index',
+           component:Index
+         }
       ]
     }
-   
   ]
 })
