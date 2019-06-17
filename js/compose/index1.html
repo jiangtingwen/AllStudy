@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组去重
+        const arr = [1,2,3,4,1,5];
+        let newArr = arr.reduce((pre,next) => {
+            //默认值  就是 第一次 循环时 pre的值
+            if(!pre.includes(next)){
+                pre.push(next);
+            }
+
+            return pre;
+        },[]);
+    </script>
+</body>
+</html>

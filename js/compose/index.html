@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const multiply = (x, y) => x * y;
+    const add5 = (x) => x + 5;
+    
+    const res1 = multiply(2, 5);
+    const res2 = add5(res1);
+    // console.log(res2);
+    // reduce();
+    const arr = [1, 2, 3, 4, 5];
+    const sum = arr.reduce((pre, next) => {
+      // console.log(pre, next)
+      // 第一次 pre 第一项 next 第二项
+      // 第二次以及以后 pre 依赖上一次的返回结果
+      return next + pre;
+    })
+    // 1  2  3
+    // 3  3  6
+    // 6  4   10
+    // console.log(sum)
+    const compose = (...fns) => {
+        // 运行 fns 需要组合的函数
+        // fns = [add5, multiply]
+        return fns.reduce((prev, next) => {
+          return (...args) => prev(next(...args))
+        })
+    } 
+    const multiplyAndAdd5 = compose(add5, add5, multiply);
+    console.log(multiplyAndAdd5(2, 5))
+  </script>
+</body>
+<ml>
