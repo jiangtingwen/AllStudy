@@ -19,8 +19,24 @@
                  <h2 class="subtitle" v-html="(currentSong.ar && currentSong.ar[0].name)
                   || (currentSong.artists && currentSong.artists[0].name)"></h2>
              </div>
+        
              <!-- 播放页面的内容 -->
-
+          <div class="middle" @touchstart.prevent="middleTouchStart" 
+          @touchmove.prevent="middleTouchMove" @touchend="middleTouchEnd">
+          <div class="middle-l" ref="middleL">
+            <div class="cd-wrapper" ref="cdWrapper">
+              <div class="cd" ref="imageWrapper">
+                <img :src="(currentSong.al && currentSong.al.picUrl) || 
+              (currentSong.artists && currentSong.artists[0].img1v1Url)" 
+              alt="" ref="image" :class="cdCls" class="image" >
+              </div>
+            </div>
+            <!-- 歌词 -->
+            <div class="playing-lyric-wrapper">
+              <div class="playing-lyric">{{playingLyric}}</div>
+            </div>
+          </div>
+          </div>
          </div>
 
         </transition>
@@ -54,29 +70,49 @@
                 </div>
             </div>
         </transition>
+
     </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
        data () {
            return {
                currentSong:[1],
                playList:[1],
-               fullScreen:false,
                playing:false,
-               cdCls:'play',
                currentTime:3,
-               duration:1
+               duration:1,
+               playingLyric:'超人不会飞'
+              
            }
        },
+       computed: {
+         cdCls () {
+           return this.playing ? 'play' : ''
+         },
+         ...mapGetters([
+           'fullScreen'
+         ])
+       },
        methods: {
-           open () {},
-           back () {},
+           open () {
+             this.$store.dispatch('selectPlaySong',true)
+           },
            enter () {},
            afterEnter () {},
            leave () {},
-           afterLeave () {}
+           afterLeave () {},
+           back () {
+             console.log(123)
+              this.$store.dispatch('selectPlaySong', false)
+            },
+           middleTouchStart(){},
+           middleTouchMove (){},
+           middleTouchEnd (){}
+           
+           
 
        }
 }
@@ -132,6 +168,56 @@ export default {
         text-align center
         font-size 14px
         color #ffffff
+    .middle
+      position fixed
+      width 100%
+      top px2rem(180px)
+      bottom px2rem(340px)
+      white-space nowrap
+      font-size 0
+      &-l
+        display inline-block
+        vertical-align top
+        position relative
+        width 100%
+        height 0
+        padding-top 80%
+        .cd-wrapper
+          position absolute
+          left 10%
+          top 0
+          width 80%
+          box-sizing border-box
+          height 100%
+          .cd
+            width 100%
+            height 100%
+            border-radius 50%
+            .image
+              position absolute
+              left 0
+              top 0
+              width 100%
+              height 100%
+              box-sizing border-box
+              border-radius 50%
+              border 10px solid rgba(255, 255, 255, 0.1)
+            .play
+              animation rotate 20s linear infinite
+
+      .playing-lyric-wrapper
+        width 80%
+        margin 30px auto 0 auto
+        overflow hidden
+        text-align center      
+        .playing-lyric
+          height px2rem(40px)
+          line-height px2rem(40px)
+          font-size 14px
+          color hsla(0,0%,100%,0.5)
+
+
+  
   .mini-player
     display flex
     align-items center
@@ -201,9 +287,16 @@ export default {
         height 100%
         background linear-gradient(#902541, #902444)
 
+
+   
+
+
+
+
 @keyframes rotate
   0%
     transform rotate(0)
   100%
     transform rotate(360deg)
+
 </style>
