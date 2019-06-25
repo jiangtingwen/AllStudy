@@ -1,41 +1,45 @@
 <template>
-    <div class="search-box">
-        <i class="icon icon-search">&#xe638;</i>
-        <input type="text" ref="query" v-model="query" class="box" :placeholder="placeholder">
-        <i class="icon icon-dismiss" v-show="query" @click="clear"></i>
-    </div>
+  <div class="search-box">
+    <i class="icon icon-search">&#xe638;</i>
+    <input type="text" ref="query" v-model="query" class="box" :placeholder="placeholder">
+    <i class="icon icon-dismiss" v-show="query" @click="clear"></i>
+  </div>
 </template>
 
 <script>
+import { debounce } from '../common/util'
 export default {
-    props:{
-        placeholder:{
-            type:String,
-            default:'搜索歌曲、歌手'
-        }
-    },
-    data () {
-        return {
-            query:''
-            
-        }
-    },
-    methods: {
-        clear () {
-            this.query = ''
-        },
-        setQuery (query) {
-            this.query = query
-        },
-        //失去焦点
-        blur () {
-            this.$refs.query.blur()
-        }
+  props: {
+    placeholder: {
+      type: String,
+      default: '搜索歌曲、歌手' 
     }
+  },
+  data () {
+    return {
+      query: ''
+    }
+  },
+  methods: {
+    clear() {
+      this.query = ''  
+    },
+    setQuery (query) {
+      this.query = query
+    },
+    blur () {
+      this.$refs.query.blur()
+    }
+  },
+  created() {
+    this.$watch('query', debounce((newQuery) => {
+      this.$emit('query', newQuery)  
+    }))
+  },
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang='stylus' scoped>
 @import '../assets/css/function'
 .search-box 
   display flex
@@ -63,4 +67,8 @@ export default {
     font-size 20px
     margin-right px2rem(10px)
     color #6b6a6a
+
 </style>
+
+
+

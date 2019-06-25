@@ -1,126 +1,106 @@
 <template>
-    <div class="play" v-show="playList.length>0">
-        <!-- 播放页面 -->
-        <transition name="normal" @enter="enter" @after-enter="afterEnter"
-         @leave="leave" @after-leave="afterLeave">
-
-         <div class="normal-player" v-show="fullScreen">
-             <div class="background">
-                 <img width="100%" height="100%"
-                  :src="(currentSong.al && currentSong.al.picUrl) 
-                  || (currentSong.artists && currentSong.artists[0].img1v1Url)" alt="">
-             </div>
-             <!-- 播放页面的头部 -->
-             <div class="top">
-                 <div class="back" @click="back">
-                     <i class="icon">&#xe8e2;</i>
-                 </div>
-                 <h1 class="title" v-html="currentSong.name"></h1>
-                 <h2 class="subtitle" v-html="(currentSong.ar && currentSong.ar[0].name)
-                  || (currentSong.artists && currentSong.artists[0].name)"></h2>
-             </div>
-        
-             <!-- 播放页面的内容 -->
-          <div class="middle" @touchstart.prevent="middleTouchStart" 
-          @touchmove.prevent="middleTouchMove" @touchend="middleTouchEnd">
+  <div class="play" v-show="playList.length>0">
+    <transition name="normal" @enter="enter" @after-enter="afterEnter" @leave="leave" @after-leave="afterLeave">
+      <div class="normal-player" v-show="fullScreen">
+        <div class="background">
+          <img width="100%" height="100%" :src="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" alt="">
+        </div>
+        <!-- 播放页面的头部 -->
+        <div class="top">
+          <div class="back" @click="back">
+            <i class="icon">&#xe8e2;</i>
+          </div>
+          <h1 class="title" v-html="currentSong.name"></h1>
+          <h2 class="subtitle" v-html="(currentSong.ar && currentSong.ar[0].name) || (currentSong.artists && currentSong.artists[0].name)"></h2>
+        </div>
+        <!-- 播放页面的内容 -->
+        <div class="middle" @touchstart.prevent="middleTouchStart" @touchmove.prevent="middleTouchMove" @touchend="middleTouchEnd">
           <div class="middle-l" ref="middleL">
             <div class="cd-wrapper" ref="cdWrapper">
               <div class="cd" ref="imageWrapper">
-                <img :src="(currentSong.al && currentSong.al.picUrl) || 
-              (currentSong.artists && currentSong.artists[0].img1v1Url)" 
-              alt="" ref="image" :class="cdCls" class="image" >
+                <img :src="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" alt="" ref="image" :class="cdCls" class="image">
               </div>
             </div>
-            <!-- 歌词 -->
             <div class="playing-lyric-wrapper">
               <div class="playing-lyric">{{playingLyric}}</div>
             </div>
           </div>
+        </div>
+      </div>
+    </transition>
+    <!-- 底部的播放器 -->
+    <transition name="mini">
+      <div class="mini-player" v-show="!fullScreen" @click="open">
+        <div class="picture">
+          <div class="imgWrapper" ref="miniWrapper">
+            <img ref="miniImage" :class="cdCls" width="40" v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" height="40">
           </div>
-         </div>
-
-        </transition>
-        <!-- 底部的播放器 -->
-        <transition name="mini">
-            <div class="mini-player" v-show="!fullScreen" @click="open">
-                <div class="picture">
-                    <div class="imgWrapper" ref="miniWrapper">
-                        <img ref="minImage" :class="cdCls" 
-                         width="40" height="40" v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)"
-                          >
-
-                    </div>
-                </div>
-                <div class="text">
-                    <h2 class="name" v-html="currentSong.name"></h2>
-                    <p class="desc" v-html="(currentSong.ar && currentSong.ar[0].name) || (currentSong.artists && currentSong.artists[0].name)"></p>
-                </div>
-                <div class="control">
-                    <i class="icon icon-mini" v-if="playing">&#xe60a;</i>
-                    <i class="icon icon-mini" v-else>&#xe606;</i>
-                </div>
-                <div class="control">
-                    <i class="icon">&#xe718;</i>
-                </div>
-                <div class="control">
-                    <i class="icon">&#xe927;</i>
-                </div>
-                <div class="bottom-progress-bar">
-                    <div class="bottom-progress" :style="{width:(currentTime / duration).toFixed(3)*100 + '%' }"></div>
-                </div>
-            </div>
-        </transition>
-
-    </div>
+        </div>
+        <div class="text">
+          <h2 class="name" v-html="currentSong.name"></h2>
+          <p class="desc" v-html="(currentSong.ar && currentSong.ar[0].name) || (currentSong.artists && currentSong.artists[0].name)"></p>
+        </div>
+        <div class="control">
+          <i class="icon icon-mini" v-if="playing">&#xe60a;</i>
+          <i class="icon icon-mini" v-else>&#xe606;</i>
+        </div>
+        <div class="control">
+          <i class="icon">&#xe718;</i>
+        </div>
+        <div class="control">
+          <i class="icon">&#xe927;</i>
+        </div>
+        <div class="bottom-progress-bar">
+          <div class="bottom-progress" :style="{width: (currentTime / duration).toFixed(3)*100 + '%'}"></div>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-       data () {
-           return {
-               currentSong:[1],
-               playList:[1],
-               playing:false,
-               currentTime:3,
-               duration:1,
-               playingLyric:'超人不会飞'
-              
-           }
-       },
-       computed: {
-         cdCls () {
-           return this.playing ? 'play' : ''
-         },
-         ...mapGetters([
-           'fullScreen'
-         ])
-       },
-       methods: {
-           open () {
-             this.$store.dispatch('selectPlaySong',true)
-           },
-           enter () {},
-           afterEnter () {},
-           leave () {},
-           afterLeave () {},
-           back () {
-             console.log(123)
-              this.$store.dispatch('selectPlaySong', false)
-            },
-           middleTouchStart(){},
-           middleTouchMove (){},
-           middleTouchEnd (){}
-           
-           
-
-       }
+  name: 'play',
+  data () {
+    return {
+      playList: [1],
+      currentSong: [],
+      playing: false,
+      currentTime: 3,
+      duration: 1,
+      playingLyric: '清明雨上',
+    }
+  },
+  computed: {
+    cdCls () {
+      return this.playing ? 'play' : ''  
+    },
+    ...mapGetters([
+      'fullScreen'
+    ])
+  },
+  methods: {
+    open() {
+      this.$store.dispatch('selectPlaySong', true)
+    },
+    enter() {},
+    afterEnter() {},
+    leave() {},
+    afterLeave() {},
+    back() {
+      this.$store.dispatch('selectPlaySong', false)
+    },
+    middleTouchStart() {},
+    middleTouchMove() {},
+    middleTouchEnd() {},
+  },
 }
 </script>
 
 <style lang="stylus" scoped>
 @import "../assets/css/function"
-.play
+.play 
   z-index 150
   .normal-player
     position fixed
@@ -138,10 +118,10 @@ export default {
       height 100%
       z-index -1
       opacity 0.6
-      filter blur(20px)
+      filter blur(20px) // 滤镜
     .top
       position relative
-      margin-bottom 25px
+      margin-bottom 25px 
       .back
         position absolute
         top 0
@@ -161,13 +141,13 @@ export default {
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
-        font-size 18px
-        color #ffffff
+        font-size 18px 
+        color #ffffff  
       .subtitle
         line-height px2rem(40px)
         text-align center
         font-size 14px
-        color #ffffff
+        color #ffffff   
     .middle
       position fixed
       width 100%
@@ -204,20 +184,16 @@ export default {
               border 10px solid rgba(255, 255, 255, 0.1)
             .play
               animation rotate 20s linear infinite
-
-      .playing-lyric-wrapper
-        width 80%
-        margin 30px auto 0 auto
-        overflow hidden
-        text-align center      
-        .playing-lyric
-          height px2rem(40px)
-          line-height px2rem(40px)
-          font-size 14px
-          color hsla(0,0%,100%,0.5)
-
-
-  
+        .playing-lyric-wrapper
+          width 80%
+          margin 30px auto 0 auto
+          overflow hidden
+          text-align center
+          .playing-lyric
+            height px2rem(40px)
+            line-height px2rem(40px)
+            font-size 14px
+            color hsla(0, 0%, 100%, 0.5)
   .mini-player
     display flex
     align-items center
@@ -232,7 +208,7 @@ export default {
     &.mini-leave-active
       transition all 0.4s
     &.mini-enter,
-    &.mini-leave-to
+    &.mini-leave-to 
       opacity 0
     .picture
       flex 0 0 px2rem(80px)
@@ -242,7 +218,7 @@ export default {
       .imgWrapper
         width 100%
         height 100%
-        img
+        img 
           border-radius 50%
           &.play
             animation rotate 10s linear infinite
@@ -250,7 +226,7 @@ export default {
             animation-play-state paused
     .text
       display flex
-      flex-direction columns 
+      flex-direction column
       justify-content center
       flex 1
       line-height px2rem(40px)
@@ -259,14 +235,14 @@ export default {
         margin-bottom 2px
         text-overflow ellipsis
         overflow hidden
-        white-space nowrap
         font-size 14px
+        white-space nowrap
         color #ffffff
       .desc
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
-        font-size 12px
+        font-size 12px 
         color hsla(0, 0%, 100%, 0.3)
     .control
       flex 0 0 px2rem(60px)
@@ -285,18 +261,16 @@ export default {
       background #fe7498
       .bottom-progress
         height 100%
-        background linear-gradient(#902541, #902444)
+        background linear-gradient(#902541, #902444)   
 
+      
 
-   
-
-
-
-
-@keyframes rotate
-  0%
+@keyframes rotate 
+  0% 
     transform rotate(0)
-  100%
+  
+  100% 
     transform rotate(360deg)
+  
 
 </style>

@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     leftEvent () {
-      this.$store.dispatch('setShowSidebar',true)
+      this.$store.dispatch('setShowSidebar', true)
     }
   }
 }

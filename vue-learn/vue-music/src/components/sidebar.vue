@@ -1,78 +1,75 @@
 <template>
-    <div class="sidebar" :class="{showSidebar:showSidebar}">
-        <div class="sidebar-con" :class="{showbar:showSidebar}">
-            <div class="head">
-                <div class="avatar">
-                    <img src="../assets/avatar.jpg" alt="">
-                </div>
-                <div class="name">超人不会飞</div>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li @click="_hidebar">
-                        <router-link to="/user" @click="_hidebar">
-                        <i class="icon">&#xe63c;</i>
-                        <span>个人中心</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="" @click="_hidebar">
-                        <i class="icon">&#xe631;</i>
-                        <span>音效调整</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="" @click="_hidebar">
-                        <i class="icon">&#xe65b;</i>
-                        <span>定时关闭</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="" @click="_hidebar">
-                        <i class="icon">&#xe601;</i>
-                        <span>听歌识曲</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="" @click="_hidebar">
-                        <i class="icon">&#xe600;</i>
-                        <span>帮助</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/user" @click="_hidebar">
-                        <i class="icon">&#xe6ef;</i>
-                        <span>设置</span>
-                        </router-link>
-                    </li>
-
-                </ul>
-            </div>
+  <div class="sidebar" :class="{showSidebar: showSidebar}">
+    <div class="sidebar-con" :class="{showbar: showSidebar}">
+      <div class="head">
+        <div class="avatar">
+          <img src="./avatar.jpg" alt="">
         </div>
-            <div v-show="showSidebar" class="sidebar_mask" @click="_hidebar">  
-            </div>
+        <div class="name">清影</div>
+      </div>
+      <div class="menu">
+        <ul>
+          <li @click="_hidebar">
+            <router-link to="/user" >
+            <i class="icon">&#xe63c;</i>
+            <span>个人中心</span>
+            </router-link>
+          </li>
+          <li @click="_hidebar">
+            <router-link to="/" >
+            <i class="icon">&#xe631;</i>
+            <span>音效调整</span>
+            </router-link>
+          </li>
+          <li @click="_hidebar">
+            <router-link to="/">
+            <i class="icon">&#xe65b;</i>
+            <span>定时关闭</span>
+            </router-link>
+          </li>
+          <li @click="_hidebar">
+            <router-link to="/">
+            <i class="icon">&#xe601;</i>
+            <span>听歌识曲</span>
+            </router-link>
+          </li>
+          <li @click="_hidebar">
+            <router-link to="/">
+            <i class="icon">&#xe600;</i>
+            <span>帮助</span>
+            </router-link>
+          </li>
+          <li @click="_hidebar">
+            <router-link to="/">
+            <i class="icon">&#xe61f;</i>
+            <span>设置</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
     </div>
+    <div v-show="showSidebar" class="sidebar_mask" @click="_hidebar"></div>
+  </div>
 </template>
 
-<script> 
-import {mapGetters} from 'vuex'
+<script>
+import { mapGetters } from 'vuex'
 export default {
-    data () {
-        return {
-            
-        }
-    },
-    computed: {
-        ...mapGetters([
-            'showSidebar'
-        ])
-    },
-    methods: {
-        _hidebar () {
-            // console.log('-----')
-            this.$store.dispatch('setShowSidebar',false)
-        }
+  data () {
+    return {
+      
     }
+  },
+  computed: {
+    ...mapGetters([
+      'showSidebar'
+    ])
+  },
+  methods: {
+    _hidebar () {
+      this.$store.dispatch('setShowSidebar', false)
+    }
+  },
 }
 </script>
 
@@ -105,11 +102,8 @@ export default {
         background #f1f1f1
         border-radius 50%
         margin px2rem(60px) auto px2rem(15px)
-        border-radius 50%
         img 
           width 100%
-          border-radius 50%
-          
         
       
       .name 
@@ -151,3 +145,4 @@ export default {
     z-index 1001
     background rgba(0, 0, 0, 0.4)
 </style>
+

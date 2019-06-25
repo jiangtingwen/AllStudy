@@ -1,58 +1,56 @@
 let Toast = {}
-Toast.install = function (Vue,options) {
-    let opt = {
-        defaultTtpe: 'center', //默认显示的位置
-        duration: '1500'       //持续的时间
+Toast.install = function (Vue, options) {
+  let opt = {
+    defaultType: 'center', // 默认显示的位置
+    duration: '1500' // 持续的时间
+  }
+  for (let property in options) {
+    opt[property] = options[property] // 使用optinos的配置
+  }
+  Vue.prototype.$toast = (tips, type) => {
+    if (type) {
+      opt.defaultType = type
     }
-    for (let property in options) {
-        opt[property] = options[property]  //使用options的配置
+    if (document.getElementsByClassName('vue-toast').length) {
+      return  // 如果toast此时在页面是出现状态，则不再执行
     }
-    Vue.prototype.$toast = (tips,type) => {
-        if (type) {
-            opt.defaultTtpe = type
-        }
-        if (document.getElementsByClassName('vue-toast').length) {
-            return   //如果toast此时在页面是出现状态,则不执行
-        }
-        let toastTpl = Vue.extend({
-            template: '<div class="vue-toast toast-' + opt.defaultTtpe +'">' + tips + '</div>'
-        })
-        let tpl = new toastTpl.$mount().$el
-        document.body.appendChild(tpl)
-        setTimeout(()=>{
-            document.body.removeChild(tpl)
-        },opt.duration)
-    }
-    ['bottom','center','top'].forEach(type => {
-        Vue.prototype.$toast[type] = (tips) => {
-            return Vue.prototype.$toast(tips,type)
-        }
+    let toastTpl = Vue.extend({
+      template: '<div class="vue-toast toast-' + opt.defaultType +'">' + tips + '</div>'
     })
-
+    let tpl = new toastTpl.$mount().$el
+    document.body.appendChild(tpl)
+    setTimeout(() => {
+      document.body.removeChild(tpl)
+    }, opt.duration)
+  }
+  ['bottom', 'center', 'top'].forEach(type => {
+    Vue.prototype.$toast[type] = (tips) => {
+      return Vue.prototype.$toast(tips, type)
+    }
+  }) 
 }
 
 let Loading = {}
 Loading.install = function (Vue) {
-    let tpl 
-    Vue.prototype.$showLoading = () => {
-        if (document.getElementsByClassName('vue-loading').length) {
-            return 
-        }
-        let loadingTpl = Vue.extend({ //创建好构造器 定义好模板
-            template:'<div class="vue-loading"></div>'
-        })
-
-        tpl = new loadingTpl().$mount.$el  //挂载到dom结构
-        document.body.appendChild(tpl)
+  let tpl
+  Vue.prototype.$showLoading = () => {
+    if (document.getElementsByClassName('vue-loading').length) {
+      return 
     }
-    Vue.prototype.$hideLoading = () => {
-        if (document.getElementsByClassName('vue-loading').length) {
-            document.body.removeChild(tpl)
-        }
-        
+    let loadingTpl = Vue.extend({ // 创建构造器，定义好提示信息的模板
+      template: '<div class="vue-loading"></div>'
+    })
+    tpl = new loadingTpl().$mount.$el
+    document.body.appendChild(tpl)
+  }
+  Vue.prototype.$hideLoading = () => {
+    if (document.getElementsByClassName('vue-loading').length) {
+      document.body.removeChild(tpl)
     }
+  }
 }
+
 export {
-    Toast,
-    Loading
+  Toast,
+  Loading
 }
