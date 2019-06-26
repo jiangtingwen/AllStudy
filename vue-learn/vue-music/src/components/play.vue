@@ -1,6 +1,13 @@
 <template>
   <div class="play" v-show="playList.length>0">
-    <transition name="normal" @enter="enter" @after-enter="afterEnter" @leave="leave" @after-leave="afterLeave">
+    <!-- 播放页面 -->
+    <transition 
+      name="normal"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @leave="leave"
+      @after-leave="afterLeave"
+    >
       <div class="normal-player" v-show="fullScreen">
         <div class="background">
           <img width="100%" height="100%" :src="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" alt="">
@@ -14,11 +21,21 @@
           <h2 class="subtitle" v-html="(currentSong.ar && currentSong.ar[0].name) || (currentSong.artists && currentSong.artists[0].name)"></h2>
         </div>
         <!-- 播放页面的内容 -->
-        <div class="middle" @touchstart.prevent="middleTouchStart" @touchmove.prevent="middleTouchMove" @touchend="middleTouchEnd">
+        <div class="middle" 
+        @touchstart.prevent="middleTouchStart"
+        @touchmove.prevent="middleTouchMove"
+        @touchend="middleTouchEnd"
+        >
           <div class="middle-l" ref="middleL">
             <div class="cd-wrapper" ref="cdWrapper">
               <div class="cd" ref="imageWrapper">
-                <img :src="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" alt="" ref="image" :class="cdCls" class="image">
+                <img 
+                  :src="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" 
+                  alt=""
+                  ref="image"
+                  :class="cdCls"
+                  class="image"
+                >
               </div>
             </div>
             <div class="playing-lyric-wrapper">
@@ -33,7 +50,13 @@
       <div class="mini-player" v-show="!fullScreen" @click="open">
         <div class="picture">
           <div class="imgWrapper" ref="miniWrapper">
-            <img ref="miniImage" :class="cdCls" width="40" v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)" height="40">
+            <img 
+              ref="miniImage"
+              :class="cdCls"
+              width="40"
+              height="40"
+              v-lazy="(currentSong.al && currentSong.al.picUrl) || (currentSong.artists && currentSong.artists[0].img1v1Url)"
+            >
           </div>
         </div>
         <div class="text">
@@ -61,7 +84,6 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  name: 'play',
   data () {
     return {
       playList: [1],
@@ -69,38 +91,38 @@ export default {
       playing: false,
       currentTime: 3,
       duration: 1,
-      playingLyric: '清明雨上',
+      playingLyric: '我叹服你的技巧'
     }
   },
   computed: {
     cdCls () {
-      return this.playing ? 'play' : ''  
+      return this.playing ? 'play' : ''
     },
     ...mapGetters([
       'fullScreen'
     ])
   },
   methods: {
-    open() {
+    open () {
       this.$store.dispatch('selectPlaySong', true)
     },
-    enter() {},
-    afterEnter() {},
-    leave() {},
-    afterLeave() {},
-    back() {
+    enter () {},
+    afterEnter () {},
+    leave () {},
+    afterLeave () {},
+    back () {
       this.$store.dispatch('selectPlaySong', false)
     },
-    middleTouchStart() {},
-    middleTouchMove() {},
-    middleTouchEnd() {},
-  },
+    middleTouchStart () {},
+    middleTouchMove () {},
+    middleTouchEnd () {}
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
 @import "../assets/css/function"
-.play 
+.play
   z-index 150
   .normal-player
     position fixed
@@ -118,10 +140,10 @@ export default {
       height 100%
       z-index -1
       opacity 0.6
-      filter blur(20px) // 滤镜
+      filter blur(20px)
     .top
       position relative
-      margin-bottom 25px 
+      margin-bottom 25px
       .back
         position absolute
         top 0
@@ -141,13 +163,13 @@ export default {
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
-        font-size 18px 
-        color #ffffff  
+        font-size 18px
+        color #ffffff
       .subtitle
         line-height px2rem(40px)
         text-align center
         font-size 14px
-        color #ffffff   
+        color #ffffff
     .middle
       position fixed
       width 100%
@@ -208,7 +230,7 @@ export default {
     &.mini-leave-active
       transition all 0.4s
     &.mini-enter,
-    &.mini-leave-to 
+    &.mini-leave-to
       opacity 0
     .picture
       flex 0 0 px2rem(80px)
@@ -218,7 +240,7 @@ export default {
       .imgWrapper
         width 100%
         height 100%
-        img 
+        img
           border-radius 50%
           &.play
             animation rotate 10s linear infinite
@@ -226,7 +248,7 @@ export default {
             animation-play-state paused
     .text
       display flex
-      flex-direction column
+      flex-direction columns 
       justify-content center
       flex 1
       line-height px2rem(40px)
@@ -235,14 +257,14 @@ export default {
         margin-bottom 2px
         text-overflow ellipsis
         overflow hidden
-        font-size 14px
         white-space nowrap
+        font-size 14px
         color #ffffff
       .desc
         text-overflow ellipsis
         overflow hidden
         white-space nowrap
-        font-size 12px 
+        font-size 12px
         color hsla(0, 0%, 100%, 0.3)
     .control
       flex 0 0 px2rem(60px)
@@ -261,16 +283,13 @@ export default {
       background #fe7498
       .bottom-progress
         height 100%
-        background linear-gradient(#902541, #902444)   
+        background linear-gradient(#902541, #902444)
 
-      
 
-@keyframes rotate 
-  0% 
+
+@keyframes rotate
+  0%
     transform rotate(0)
-  
-  100% 
+  100%
     transform rotate(360deg)
-  
-
 </style>

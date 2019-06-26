@@ -11,7 +11,12 @@
           <div class="hot-key">
             <h1 class="title">热门搜索</h1>
             <ul>
-              <li class="item" v-for="(item, index) in hotKey" :key="index" @click="addQuery(item.first)">
+              <li
+                class="item"
+                v-for="(item, index) in hotKey"
+                :key="index"
+                @click="addQuery(item.first)"
+              >
                 <span>{{item.first}}</span>
               </li>
             </ul>
@@ -25,35 +30,34 @@
               </span>
             </h1>
             <!-- 搜索历史列表 -->
-            <v-search-list></v-search-list>
+            <v-search-list :searches="searchHistory"></v-search-list>
           </div>
         </div>
       </v-scroll>
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" ref="searchResult">
-      <v-suggest :query="query"></v-suggest>
+      <v-suggest :query="query" @listScroll="blurInput" @select="saveSearch" ref="suggest"></v-suggest>
     </div>
   </div>
 </template>
 
 <script>
-import searchBox from '../searchBox'
-import scroll from '../scroll'
-import searchList from '../searchList'
-import suggest from '../suggest'
+import searchBox from '@/components/searchBox'
+import scroll from '@/components/scroll'
+import searchList from '@/components/searchList'
+import suggest from '@/components/suggest'
+import api from '@/api'
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
       query: '',
-      searchHistory: 'mk',
+      shortcut: [],
       hotKey: [
-        {first: '许嵩新歌发送'},
-        {first: '许嵩新歌发送'},
-        {first: '许嵩新歌发送'},
-        {first: '五月天新歌发送'},
-        {first: '许嵩新歌发送'}
-      ]
+       
+      ],
+      refreshDelay: 2
     }
   },
   components: {
@@ -62,14 +66,33 @@ export default {
     'v-search-list': searchList,
     'v-suggest': suggest
   },
+  computed:{
+    ...mapGetters([
+      'searchHistory'
+    ]) 
+  },
   methods: {
-    showConfirm () {
-
-    },
+    showConfirm () {},
     onQueryChange (query) {
+      // console.log(query)
       this.query = query
+    },
+    blurInput () {},
+    saveSearch (data) {
+      console.log(data)
+    },
+    _getHotKey () {
+      api.HotSearchKey().then((res) => {
+        if(res.code === 200) {
+          this.hotKey = res.result.hots.slice(0,10)
+        }
+      })  
     }
   },
+  created () {
+    this._getHotKey()
+    // this.$store.dispatch('saveSearchHistory',this.query)
+  }
 }
 </script>
 
@@ -97,23 +120,23 @@ export default {
           display inline-block
           padding px2rem(10px) px2rem(20px)
           margin 0 px2rem(20px) px2rem(20px) 0
-          border-radius 6px 
+          border-radius 6px
           font-size 14px
           color hsla(0, 0%, 100%, 0.3)
-          background #2f3054 
+          background #2f3054
       .search-history
         position relative
         margin 0 px2rem(40px)
         .title
           display flex
           align-items center
-          font-size 14px 
           height px2rem(80px)
+          font-size 14px
           color hsla(0, 0%, 100%, 0.5)
           .text
-            flex 1 
+            flex 1
           .clear
-            .icon   
+            .icon
               font-size 18px
-              color hsla(0, 0%, 100%, 0.3)     
+              color hsla(0, 0%, 100%, 0.3)
 </style>

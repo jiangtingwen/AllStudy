@@ -1,3 +1,4 @@
+
 <template>
   <div class="search-box">
     <i class="icon icon-search">&#xe638;</i>
@@ -7,12 +8,12 @@
 </template>
 
 <script>
-import { debounce } from '../common/util'
+import { debounce } from '@/common/util'
 export default {
   props: {
     placeholder: {
       type: String,
-      default: '搜索歌曲、歌手' 
+      default: '搜索歌曲、歌手'
     }
   },
   data () {
@@ -21,8 +22,8 @@ export default {
     }
   },
   methods: {
-    clear() {
-      this.query = ''  
+    clear () {
+      this.query = ''
     },
     setQuery (query) {
       this.query = query
@@ -31,14 +32,13 @@ export default {
       this.$refs.query.blur()
     }
   },
-  created() {
+  created () {
     this.$watch('query', debounce((newQuery) => {
-      this.$emit('query', newQuery)  
+      this.$emit('query', newQuery)
     }))
-  },
+  }
 }
 </script>
-
 <style lang='stylus' scoped>
 @import '../assets/css/function'
 .search-box 
@@ -67,8 +67,4 @@ export default {
     font-size 20px
     margin-right px2rem(10px)
     color #6b6a6a
-
 </style>
-
-
-

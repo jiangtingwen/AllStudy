@@ -3,7 +3,7 @@ import axios from 'axios'
 const vue = new Vue()
 
 // axios配置
-axios.defaults.timeout = 10000 // 10秒请求不到 就停止
+axios.defaults.timeout = 10000
 axios.defaults.baseURL = 'http://localhost:3000'
 
 // 返回状态判断
@@ -13,7 +13,7 @@ axios.interceptors.response.use((res) => {
     vue.$hideLoading()
     return Promise.reject(res)
   }
-  return res 
+  return res
 }, (error) => {
   vue.$toast('网络异常')
   vue.$hideLoading()
@@ -31,7 +31,7 @@ export function fetchGet(url, param) {
       reject(err)
     })
     .catch((error) => {
-      reject(error);
+      reject(error)
     })
   })
 }
@@ -45,7 +45,7 @@ export default {
   BannerList() {
     return fetchGet('/banner')
   },
-  // 歌单
+  //歌单
   DiscLists(params) {
     return fetchGet('/top/playlist', params)
   },
@@ -56,5 +56,9 @@ export default {
   // 歌曲搜索
   MusicSearch (params) {
     return fetchGet('/search', params)
+  },
+  //热门搜索
+  HotSearchKey () {
+    return fetchGet('/search/hot')
   }
 }

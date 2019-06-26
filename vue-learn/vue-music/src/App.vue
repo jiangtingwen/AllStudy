@@ -14,17 +14,17 @@
       <router-view></router-view>
     </keep-alive>
     <!-- play -->
+    <v-play></v-play>
     <!-- sidebar -->
     <v-sidebar></v-sidebar>
-    <v-play></v-play>
   </div>
 </template>
 
 <script>
-import header from './components/header'
-import tab from './components/tab'
-import sidebar from './components/sidebar'
-import play from './components/play'
+import header from '@/components/header'
+import tab from '@/components/tab'
+import sidebar from '@/components/sidebar'
+import play from '@/components/play'
 export default {
   name: 'App',
   components: {
@@ -59,6 +59,3 @@ html,body
   background rgba(8, 5, 58, 0.9)
   color #fff
 </style>
-
-
-
