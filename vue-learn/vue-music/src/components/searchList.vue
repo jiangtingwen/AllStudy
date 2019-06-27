@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     selectItem () {
-
+      this.$emit('select',item)
     }
   }
 }
