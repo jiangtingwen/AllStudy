@@ -49,16 +49,12 @@ import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
 import api from '@/api'
 import { mapGetters } from 'vuex'
-import {searchMixin} from '@/common/mixin.js'
+import { searchMixin } from '@/common/mixin.js'
 export default {
   data () {
     return {
-      query: '',
       shortcut: [],
-      hotKey: [
-       
-      ],
-      refreshDelay: 2
+      hotKey: []
     }
   },
   components: {
@@ -67,28 +63,15 @@ export default {
     'v-search-list': searchList,
     'v-suggest': suggest
   },
-  mixins:[searchMixin],
-  computed:{
-    ...mapGetters([
-      'searchHistory'
-    ]) 
-  },
+  mixins: [searchMixin],
   methods: {
     showConfirm () {},
-    onQueryChange (query) {
-      // console.log(query)
-      this.query = query
-    },
-    blurInput () {
-
-    },
-   
     _getHotKey () {
       api.HotSearchKey().then((res) => {
-        if(res.code === 200) {
-          this.hotKey = res.result.hots.slice(0,10)
+        if (res.code === 200) {
+          this.hotKey = res.result.hots.slice(0, 10)
         }
-      })  
+      })
     }
   },
   created () {

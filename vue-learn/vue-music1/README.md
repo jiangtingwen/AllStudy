@@ -1,1 +1,0 @@
-npm i lyric-parser  歌词解析器

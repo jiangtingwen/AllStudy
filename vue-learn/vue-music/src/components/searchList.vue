@@ -21,12 +21,12 @@ export default {
   props: {
     searches: {
       type: Array,
-      default: ['许嵩']
+      default: []
     }
   },
   methods: {
-    selectItem () {
-      this.$emit('select',item)
+    selectItem (item) {
+      this.$emit('select', item)
     }
   }
 }

@@ -1,5 +1,3 @@
-
-//防抖
 export function debounce (func, delay) {
   let timer
   return function(...args) {
@@ -12,8 +10,8 @@ export function debounce (func, delay) {
   }
 }
 
-export function findIndex(list,song) {
-    return list.findIndex((item) => {
-      return item.id === song.id
-    })
+export function findIndex (list, song) {
+  return list.findIndex ((item) => {
+    return item.id === song.id
+  })
 }
