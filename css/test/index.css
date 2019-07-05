@@ -1,0 +1,41 @@
+.one{
+    width: 500px;
+    background-color: aqua;
+    height: 300px;
+}
+.oneLeft{
+    width: 30%;
+    background-color: red;
+    float: left;
+}
+.oneRight{
+    width: 70%;
+    background-color: green;
+    float: left;
+    height: 200px;
+}
+.oneUl{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.oneUl li{
+    background-color: pink;
+    margin: 5px 0px;
+    padding: 5px 5px;
+    position: relative;
+}
+.oneUl li div{
+    width: 350px;
+    height: 200px;
+    background-color: yellow;
+    position: absolute;
+    left: 150px;
+    top: -5px;
+}
+.oneUl li :hover{
+    
+}
+
+
+
