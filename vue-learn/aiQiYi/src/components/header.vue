@@ -32,7 +32,6 @@ export default {
                 objectClass: {
                     tab_item:false,
                     tab_item_big:true
-
                 }
             }
         
