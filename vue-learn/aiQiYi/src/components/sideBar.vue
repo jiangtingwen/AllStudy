@@ -150,4 +150,8 @@ export default {
             .icon,
             span 
               color #902444
+    .bottom
+        .public
+            padding-left px2rem(60px)
+            margin-top px2rem(40px)
 </style>
