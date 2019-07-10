@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ['1','2','3'].map(parseInt)
+
+        
+        ['1','2','3'].map(callback)
+        //等价
+        ['1','2','3'].map((a,b,c)=>{
+            console.log(a,b,c)
+        })
+        var str = '123'
+        var numberStr = parseInt(str) 
+        
+        var get = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(666)
+            },3000)
+        })
+        // get.then(res => {
+        //     console.log(res)
+        // })
+        // get.then(console.log)
+        // get.then(callback)
+        // // 等价的
+        // get.then((a,b,c)=>{
+        //     console.log(a,b,c)
+        // })
+        function callback(a,b,c){
+            console.log(a,b,c);
+        }
+    </script>
+</body>
+</html>
