@@ -1,39 +1,39 @@
 <template>
-    <div class="siderbar">
+    <div class="siderbar" v-show="showSidebar">
         <div class="menu">
             <div class="top">
               <ul>
-                <li @click="hideBar">
+                <li>
                     <router-link to="message" @click="hideBar">
                         <i class="iconfont">&#xe64b;</i>
                         <span>消息中心</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="clothes" @click="hideBar">
                         <i class="iconfont">&#xe782;</i>
                         <span>皮肤中心</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="vip" @click="hideBar">
                         <i class="iconfont">&#xe78e;</i>
                         <span>会员中心</span>
                     </router-link>
                 </li>
-                 <li @click="hideBar">
+                 <li>
                     <router-link to="flow" @click="hideBar">
                         <i class="iconfont">&#xe79c;</i>
                         <span>流量包月</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="flow" @click="hideBar">
                         <i class="iconfont">&#xe79c;</i>
                         <span>流量包月</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="personal" @click="hideBar">
                         <i class="iconfont">&#xe790;</i>
                         <span>私人云盘</span>
@@ -42,59 +42,58 @@
             </ul>
             </div>
             <div class="line">
-
             </div>
             <div class="middle">
                 <ul>
-                <li @click="hideBar">
+                <li>
                     <router-link to="settime" @click="hideBar">
                         <i class="iconfont">&#xe78f;</i>
                         <span>定时关闭</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="clock" @click="hideBar">
                         <i class="iconfont">&#xe79d;</i>
                         <span>音乐闹钟</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="kuishe" @click="hideBar">
                         <i class="iconfont">&#xe639;</i>
                         <span>蝰蛇音效</span>
                     </router-link>
                 </li>
-                 <li @click="hideBar">
+                 <li>
                     <router-link to="listenMusic" @click="hideBar">
                         <i class="iconfont">&#xe602;</i>
                         <span>听歌识曲</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="musicTool" @click="hideBar">
                         <i class="iconfont">&#xe78d;</i>
                         <span>音乐工具</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="drive" @click="hideBar">
                         <i class="iconfont">&#xe6fb;</i>
                         <span>驾驶模式</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="music" @click="hideBar">
                         <i class="iconfont">&#xe605;</i>
                         <span>个性彩铃</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="children" @click="hideBar">
                         <i class="iconfont">&#xe66c;</i>
                         <span>儿童专区</span>
                     </router-link>
                 </li>
-                <li @click="hideBar">
+                <li>
                     <router-link to="shop" @click="hideBar">
                         <i class="iconfont">&#xe616;</i>
                         <span>酷狗商城</span>
@@ -102,11 +101,13 @@
                 </li>
             </ul>
             </div>
+            <div class="line"></div>
             <div class="bottom">
                 <div class="public">
                     <i class="iconfont">&#xe691;</i>
                     <span>通知栏歌词</span>
                 </div>
+                <div class="lined"></div>
                 <div class="bottom-set">
                     <div class="set">
                     <i class="iconfont">&#xe603;</i>
@@ -120,76 +121,109 @@
                 
             </div>
         </div>
+        <div v-show="showSidebar" class="side_mask" @click="hidebar"></div>
     </div>
 </template>
 
 <script>
 export default {
+    data () {
+        return {
+            showSidebar:true
+        }
+    },
+    methods: {
+        hidebar () {
+            console.log('aaa')
+            this.showSidebar=false
 
+        }
+    }
 }
 </script>
 
 <style lang="stylus" scoped>
 @import "../assets/css/function"
-.menu 
-      margin-top px2rem(30px)
-      
-      ul 
-        li 
-          height px2rem(90px)
-          line-height px2rem(90px)
-          list-style none
-          a 
-            display block
-            padding-left px2rem(60px)
-            .iconfont 
-              font-size px2rem(36px)
-              vertical-align middle
-              opacity 0.8
-            span 
-              vertical-align middle
-              font-size px2rem(24px)
-              padding-left px2rem(20px)
-              color #fff
-        
-                
-          
-         
-    .bottom
-        .public
-            padding-left px2rem(60px)z`
-            margin-top px2rem(40px)
-            margin-bottom px2rem(40px)
-            .iconfont
-                font-size px2rem(36px)
-                margin-right px2rem(12px)
-                opacity 0.8
-            span
-                font-size px2rem(24px)
-                vertical-align middle
+.siderbar
+    width 100%
+    .menu
+        position absolute
+        top 0
+        width px2rem(750px)
+        background #000
+        .top,.middle
+            width 100%
+            ul 
+                li 
+                    height px2rem(90px)
+                    line-height px2rem(90px)
+                    list-style none
+                    a 
+                        display block
+                        padding-left px2rem(60px)
+                        .iconfont 
+                            font-size px2rem(36px)
+                            vertical-align middle
+                            opacity 0.8
+                        span 
+                            vertical-align middle
+                            font-size px2rem(24px)
+                            padding-left px2rem(20px)
+                            color #fff
+        .line
+            border-bottom  1px solid 
+            margin px2rem(40px) px2rem(60px)
+            opacity 0.1     
+        .bottom 
+            .public
+                padding-left px2rem(60px)
+                margin-top px2rem(40px)
+                margin-bottom px2rem(40px)
+                .iconfont
+                    font-size px2rem(36px)
+                    margin-right px2rem(12px)
+                    opacity 0.8
+                span
+                    font-size px2rem(24px)
+                    vertical-align middle
+        .lined
+            border-bottom 1px solid #ffffff
+            opacity 0.1
         .bottom-set
             display flex
             padding-bottom px2rem(30px)
             padding-left px2rem(60px)
             font-size px2rem(24px)
+            margin-top px2rem(40px)
             .set
                 flex 1
                 span
                     padding-left px2rem(10px)
                 .iconfont
                     opacity 0.8
-
             .exit
                 flex 0 0 px2rem(180px)
                 span 
                     padding-left px2rem(10px)
                 .iconfont
                     opacity 0.8
-          
+
+
+            
 
 
                 
                 
 
 
+    .side_mask
+        width 100%
+        position fixed
+        margin 0 auto 
+        top 0
+        left 0
+        bottom 0
+        right 0
+        z-index 1000
+        background  rgba(0,0,0,0.4)
 </style>

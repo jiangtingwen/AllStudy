@@ -35,6 +35,11 @@ export default {
                 }
             }
         
+        },
+        methods:{
+            leftEvent(){
+                
+            }
         }
     }
 
@@ -45,6 +50,7 @@ export default {
 .tab
     padding px2rem(50px) px2rem(30px)
     display flex
+    z-index 100
     .left-icon
         flex 0 0 px2rem(50px)
     .content-tab
