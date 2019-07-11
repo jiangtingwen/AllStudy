@@ -41,6 +41,9 @@
                 </li>
             </ul>
             </div>
+            <div class="line">
+
+            </div>
             <div class="middle">
                 <ul>
                 <li @click="hideBar">
@@ -105,10 +108,14 @@
                     <span>通知栏歌词</span>
                 </div>
                 <div class="bottom-set">
+                    <div class="set">
                     <i class="iconfont">&#xe603;</i>
                     <span>设置</span>
+                    </div>
+                    <div class="exit">
                     <i class="iconfont">&#xe75a;</i>
                     <span>退出登录</span>
+                    </div>
                 </div>
                 
             </div>
@@ -144,15 +151,13 @@ export default {
               font-size px2rem(24px)
               padding-left px2rem(20px)
               color #fff
-            
+        
+                
           
-          &hover 
-            .icon,
-            span 
-              color #902444
+         
     .bottom
         .public
-            padding-left px2rem(60px)
+            padding-left px2rem(60px)z`
             margin-top px2rem(40px)
             margin-bottom px2rem(40px)
             .iconfont
@@ -161,6 +166,29 @@ export default {
                 opacity 0.8
             span
                 font-size px2rem(24px)
+                vertical-align middle
+        .bottom-set
+            display flex
+            padding-bottom px2rem(30px)
+            padding-left px2rem(60px)
+            font-size px2rem(24px)
+            .set
+                flex 1
+                span
+                    padding-left px2rem(10px)
+                .iconfont
+                    opacity 0.8
+
+            .exit
+                flex 0 0 px2rem(180px)
+                span 
+                    padding-left px2rem(10px)
+                .iconfont
+                    opacity 0.8
+          
+
+
+                
                 
 
 
