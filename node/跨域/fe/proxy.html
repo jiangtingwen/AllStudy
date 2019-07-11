@@ -10,7 +10,9 @@
   <script>
     document.cookie = 'name=helloCors';
     // X-custom: 'abc'
-    fetch('http://localhost:9999/api/post', {
+    // 补充上当前的域名：端口号
+    // :8080/api/post
+    fetch('/api/post', {
       headers: {
         'X-custom': 'abc'
       },

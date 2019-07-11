@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <iframe src="http://localhost:9999/"
+  id="ifWindow"
+   frameborder="0"></iframe>
+  <div>这是 fe/irfame.html </div>
+  <script>
+  // 
+  window.onload = function() {
+    const ifWindow = document
+    .getElementById('ifWindow');
+    const targetWindow = ifWindow.contentWindow;
+    // 窗口.postMessage('消息', '源')
+    targetWindow.postMessage('name1',
+    'http://localhost:9999');
+    window.addEventListener('message', function(e) {
+      console.log('请求得到的结果', e.data);
+    });
+  }
+  </script>
+</body>
+</html>

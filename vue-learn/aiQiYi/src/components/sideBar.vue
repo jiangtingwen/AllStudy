@@ -154,4 +154,14 @@ export default {
         .public
             padding-left px2rem(60px)
             margin-top px2rem(40px)
+            margin-bottom px2rem(40px)
+            .iconfont
+                font-size px2rem(36px)
+                margin-right px2rem(12px)
+                opacity 0.8
+            span
+                font-size px2rem(24px)
+                
+
+
 </style>
