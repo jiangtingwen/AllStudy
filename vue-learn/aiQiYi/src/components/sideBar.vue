@@ -1,40 +1,40 @@
 <template>
     <div class="siderbar" v-show="showSidebar">
-        <div class="menu">
+        <div class="menu" v-show="showSidebar">
             <div class="top">
               <ul>
                 <li>
-                    <router-link to="message" @click="hideBar">
+                    <router-link to="message" @click="hidebar">
                         <i class="iconfont">&#xe64b;</i>
                         <span>消息中心</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="clothes" @click="hideBar">
+                    <router-link to="clothes" @click="hidebar">
                         <i class="iconfont">&#xe782;</i>
                         <span>皮肤中心</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="vip" @click="hideBar">
+                    <router-link to="vip" @click="hidebar">
                         <i class="iconfont">&#xe78e;</i>
                         <span>会员中心</span>
                     </router-link>
                 </li>
                  <li>
-                    <router-link to="flow" @click="hideBar">
+                    <router-link to="flow" @click="hidebar">
                         <i class="iconfont">&#xe79c;</i>
                         <span>流量包月</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="flow" @click="hideBar">
+                    <router-link to="flow" @click="hidebar">
                         <i class="iconfont">&#xe79c;</i>
                         <span>流量包月</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="personal" @click="hideBar">
+                    <router-link to="personal" @click="hidebar">
                         <i class="iconfont">&#xe790;</i>
                         <span>私人云盘</span>
                     </router-link>
@@ -45,56 +45,56 @@
             </div>
             <div class="middle">
                 <ul>
-                <li>
-                    <router-link to="settime" @click="hideBar">
+                <li @click="hidebar">
+                    <router-link to="settime" @click="hidebar">
                         <i class="iconfont">&#xe78f;</i>
                         <span>定时关闭</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="clock" @click="hideBar">
+                    <router-link to="clock" @click="hidebar">
                         <i class="iconfont">&#xe79d;</i>
                         <span>音乐闹钟</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="kuishe" @click="hideBar">
+                    <router-link to="kuishe" @click="hidebar">
                         <i class="iconfont">&#xe639;</i>
                         <span>蝰蛇音效</span>
                     </router-link>
                 </li>
                  <li>
-                    <router-link to="listenMusic" @click="hideBar">
+                    <router-link to="listenMusic" @click="hidebar">
                         <i class="iconfont">&#xe602;</i>
                         <span>听歌识曲</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="musicTool" @click="hideBar">
+                    <router-link to="musicTool" @click="hidebar">
                         <i class="iconfont">&#xe78d;</i>
                         <span>音乐工具</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="drive" @click="hideBar">
+                    <router-link to="drive" @click="hidebar">
                         <i class="iconfont">&#xe6fb;</i>
                         <span>驾驶模式</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="music" @click="hideBar">
+                    <router-link to="music" @click="hidebar">
                         <i class="iconfont">&#xe605;</i>
                         <span>个性彩铃</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="children" @click="hideBar">
+                    <router-link to="children" @click="hidebar">
                         <i class="iconfont">&#xe66c;</i>
                         <span>儿童专区</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="shop" @click="hideBar">
+                    <router-link to="shop" @click="hidebar">
                         <i class="iconfont">&#xe616;</i>
                         <span>酷狗商城</span>
                     </router-link>
@@ -136,7 +136,6 @@ export default {
         hidebar () {
             console.log('aaa')
             this.showSidebar=false
-
         }
     }
 }
@@ -149,8 +148,8 @@ export default {
     .menu
         position absolute
         top 0
-        width px2rem(750px)
-        background #000
+        width px2rem(700px)
+        background #013436  
         .top,.middle
             width 100%
             ul 
