@@ -91,7 +91,7 @@ export default {
     transition all 0.3s ease
 
     &.showbar 
-      transform translateX(px2rem(400px))
+      transform translateX(px2rem(800px))
       opacity 1
     
     .head 
