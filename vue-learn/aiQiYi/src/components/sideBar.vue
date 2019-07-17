@@ -1,6 +1,6 @@
 <template>
-    <div class="siderbar" v-show="showSidebar">
-        <div class="menu" v-show="showSidebar">
+    <div class="siderbar" :class="{showSidebar:showSidebar}">
+        <div class="menu" :class="{showbar:showSidebar}">
             <div class="top">
               <ul>
                 <li>
@@ -126,16 +126,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     data () {
         return {
-            showSidebar:true
+           
         }
+    },
+    computed:{
+        ...mapGetters([
+            'showSidebar'
+        ])
     },
     methods: {
         hidebar () {
             console.log('aaa')
-            this.showSidebar=false
+            this.$store.dispatch('setShowSidebar',false)
         }
     }
 }
@@ -145,6 +151,9 @@ export default {
 @import "../assets/css/function"
 .siderbar
     width 100%
+    &showbar 
+        transform translateX(px2rem(400px))
+        opacity 1
     .menu
         position absolute
         top 0
@@ -206,15 +215,6 @@ export default {
                     padding-left px2rem(10px)
                 .iconfont
                     opacity 0.8
-
-
-            
-
-
-                
-                
-
-
     .side_mask
         width 100%
         position fixed

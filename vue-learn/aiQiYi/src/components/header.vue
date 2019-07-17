@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 
 export default {
     name:'hd',
@@ -38,7 +39,8 @@ export default {
         },
         methods:{
             leftEvent(){
-                
+                console.log('123')
+                this.$store.dispatch('setShowSidebar',true)
             }
         }
     }
