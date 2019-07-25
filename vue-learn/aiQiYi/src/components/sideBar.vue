@@ -151,12 +151,16 @@ export default {
 @import "../assets/css/function"
 .siderbar
     width 100%
-    &showbar 
-        transform translateX(px2rem(400px))
+    .showbar 
+        transform translateX(px2rem(700px))
+        transition 0.5s ease
         opacity 1
+        z-index 1000
     .menu
         position absolute
         top 0
+        left px2rem(-700px)
+        transition 0.5s ease
         width px2rem(700px)
         background #013436  
         .top,.middle
@@ -223,6 +227,5 @@ export default {
         left 0
         bottom 0
         right 0
-        z-index 1000
-        background  rgba(0,0,0,0.4)
+        background  rgba(0,0,0,0.3)
 </style>

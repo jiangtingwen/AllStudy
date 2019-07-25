@@ -4,7 +4,7 @@
           <i class="iconfont">&#xe61e;</i>
       </div>
       <div class="content-tab">
-         <router-link :class="objectClass" to="/my">
+         <router-link :class="router-link-exact-active" to="/my">
              <span class="tab-link" >我</span>
          </router-link>
          <router-link class="tab_item" to="/listen">
@@ -27,13 +27,10 @@
 import {mapGetters} from 'vuex'
 
 export default {
-    name:'hd',
+    name:'header',
     data () {
             return {
-                objectClass: {
-                    tab_item:false,
-                    tab_item_big:true
-                }
+                
             }
         
         },
@@ -41,6 +38,9 @@ export default {
             leftEvent(){
                 console.log('123')
                 this.$store.dispatch('setShowSidebar',true)
+            },
+            Add () {
+
             }
         }
     }
@@ -62,7 +62,7 @@ export default {
            text-decoration none
            color #59d2d3
            margin 0 20px
-        .tab_item_big
+        .router-link-exact-active 
            text-decoration none
            color #59d2d3
            margin 0 20px
