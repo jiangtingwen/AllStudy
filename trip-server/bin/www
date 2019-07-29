@@ -27,7 +27,7 @@ var server = http.createServer(app);
 
 server.listen(port);
 server.on('error', onError);
-server.on('listening', onListening);    
+server.on('listening', onListening);
 
 /**
  * 将端口规范化为数字、字符串或false

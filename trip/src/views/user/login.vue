@@ -31,10 +31,13 @@
 </template>
 
 <script>
+import { Toast } from 'mand-mobile'
+import {mapActions} from 'vuex'
 export default {
   name: 'Login',
   data () {
     return {
+      userData: null,
       user: {
         name: '15330734121',
         password: '12345'
@@ -42,7 +45,26 @@ export default {
     }
   },
   methods: {
-    loginOnClick () {}
+    loginOnClick () {
+      this.loginAjax()
+    },
+    loginAjax() {
+      let params = {
+        userName: this.user.name,
+        passWord: this.user.password
+      }
+      this.$http.post('/user', params).then(res => {
+        this.userData = res.data.data
+        let tmpUser = JSON.stringify(this.userData)
+        console.log(res.data.data)
+        localStorage.setItem('user',tmpUser)
+        //存到vuex里面
+        this.setUser(this.userData)
+        Toast.succeed(`欢迎回来，${this.userData.name}`, 1500)
+        this.$router.push({path:'/trip'})
+      })
+    },
+    ...mapActions(['setUser','setUserData'])
   }
 }
 </script>
