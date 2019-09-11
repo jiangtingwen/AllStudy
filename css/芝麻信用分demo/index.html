@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  
+ <head>
+ <meta charset="UTF-8">
+ <title>芝麻信用仪表盘</title>
+ <style type="text/css">
+  html,
+  body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  }
+   
+  canvas {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff
+  }
+ </style>
+ <script>
+  window.onload = function() {
+  var canvas = document.getElementById('canvas'),
+   ctx = canvas.getContext('2d'),
+   cWidth = canvas.width,
+   cHeight = canvas.height,
+   score = canvas.attributes['data-score'].value,
+   stage = ['一般', '中等', '良好', '优秀', '极好','完美'],
+   radius1 = 165,  
+   radius2 = 150  
+   deg0 = Math.PI / 9,
+   deg1 = Math.PI * 5 / 18;
+  
+  if(score < 350 || score > 950) {
+   alert('信用分数区间：350~950');
+  } else {
+   var dot = new Dot(),
+   dotSpeed = 0.1,
+   textSpeed = Math.round(dotSpeed * 100 / deg1),
+   angle = 0,
+   credit = 350;
+  
+   (function drawFrame() {
+  
+   ctx.save();
+   ctx.clearRect(0, 0, cWidth, cHeight);
+   ctx.translate(cWidth / 2, cHeight / 2);
+   ctx.rotate(6 * deg0);
+  
+   dot.x = radius2 * Math.cos(angle);
+   dot.y = radius2 * Math.sin(angle);
+  
+   var aim = (score - 350) * deg1 / 100;
+   if(angle < aim) {
+    angle += dotSpeed;
+   }
+   dot.draw(ctx);   
+  
+   if(credit < score - textSpeed) {
+    credit += textSpeed;
+   } else if(credit >= score - textSpeed && credit < score) {
+    credit += 1;
+   }
+   text(credit);
+  
+   window.requestAnimationFrame(drawFrame);
+  
+   ctx.save(); //中间刻度层
+   ctx.beginPath();
+   ctx.strokeStyle = '#ffd1bd';
+   ctx.lineWidth = 10;
+   ctx.arc(0, 0, radius2, 0, 15 * deg0, false);
+   ctx.stroke();
+   ctx.restore();
+   ctx.save();
+
+   ctx.beginPath();
+   ctx.lineWidth = 10;
+   ctx.strokeStyle = '#fd6202';
+   ctx.arc(0, 0, radius2, 0, angle, false);
+   ctx.stroke();  
+   ctx.restore();
+   dot.draw(ctx);  
+
+   ctx.save(); // 刻度线
+   for(var i = 0; i < 7; i++) {
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#ffd1bd';
+    ctx.moveTo(140, 0);
+    ctx.lineTo(130, 0);
+    ctx.stroke();
+    ctx.rotate(deg1);
+   }
+   ctx.restore();
+  
+  
+   ctx.save(); //信用分数
+   ctx.rotate(Math.PI / 2);
+   for(i = 0; i < 7; i++) {
+    ctx.fillStyle = '#ffd1bd';
+    ctx.font = '10px Microsoft yahei';
+    ctx.textAlign = 'center';
+    ctx.fillText(350 + 100 * i, 0, -115 );
+    ctx.rotate(deg1);
+   }
+   ctx.restore();
+  
+   ctx.save(); //分数段
+   ctx.rotate(Math.PI / 2 + deg0);
+   for(i = 0; i < 6; i++) {
+    ctx.fillStyle = '#ffd1bd';
+    ctx.font = '10px Microsoft yahei';
+    ctx.textAlign = 'center';
+    ctx.fillText(stage[i], 5, -115);
+    ctx.rotate(deg1);
+   }
+   ctx.restore();
+  
+   ctx.save(); //信用阶段及评估时间文字
+   ctx.rotate(12 * deg0);
+   ctx.fillStyle = '#fb945b';
+   ctx.font = '28px Microsoft yahei';
+   ctx.textAlign = 'center';
+   if(score < 450) {
+    ctx.fillText('信用一般', 0, 40);
+   } else if(score < 550 && score >= 450) {
+    ctx.fillText('信用中等', 0, 40);
+   } else if(score < 650 && score >= 550) {
+    ctx.fillText('信用良好', 0, 40);
+   } else if(score < 750 && score >= 650) {
+    ctx.fillText('信用优秀', 0, 40);
+   } else if(score <= 850 && score >= 750) {
+    ctx.fillText('信用极好', 0, 40);
+   } else if(score <= 950 && score >= 8550) {
+    ctx.fillText('信用完美', 0, 40);
+   }
+  
+   ctx.fillStyle = '#fb945b';
+   ctx.font = '14px Microsoft yahei';
+   ctx.fillText('评估时间：2019.08.19', 0, 60);
+   ctx.restore();
+  
+//    ctx.save(); //最外层轨道
+   ctx.beginPath();
+   ctx.strokeStyle = '#ffd1bd';
+   ctx.lineWidth = 4;
+   ctx.arc(0, 0, radius1, 0, 15 * deg0, false);
+   ctx.stroke();
+   ctx.restore();
+  
+   })();
+  }
+  //创建动点对象
+  function Dot() {
+   this.x = 0;
+   this.y = 0;
+   this.draw = function(ctx) {
+   ctx.save();
+   ctx.beginPath();
+   ctx.fillStyle = '#ffffff';
+   ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
+   ctx.fill();
+   ctx.restore();
+   };
+  }
+  
+  function text(process) {
+   ctx.save();
+   ctx.rotate(12  * deg0);
+   ctx.fillStyle = '#f95c06';
+   ctx.font = '80px Microsoft yahei';
+   ctx.textAlign = 'center';
+   ctx.textBaseLine = 'top';
+   ctx.fillText(process, 0, 10);
+   ctx.restore();
+  }
+  };
+ </script>
+ </head>
+  
+ <body>
+ <canvas id="canvas" width="400" height="700" data-score='750'></canvas>
+
+ </body>
+  
+</html>

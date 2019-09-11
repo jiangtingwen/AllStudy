@@ -10,13 +10,14 @@
 // 所以返回 [0, 1]
 var twoSum = function(nums, target) {
     
-    for(let i=0,l=nums.length;i<l;i++){
-        for(let j=i+1;j<nums.length;j++){
-            if((nums[i]+nums[j])===target)
-          return [i,j];
-        }
+    // for(let i=0,l=nums.length;i<l;i++){
+    //     for(let j=i+1;j<nums.length;j++){
+    //         if((nums[i]+nums[j])===target)
+    //       return [i,j];
+    //     }
         
-    }
+    // }
 
 };
 console.log(twoSum([1,2,4,5,9],10));
+

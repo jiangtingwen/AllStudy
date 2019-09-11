@@ -4,6 +4,7 @@
     <v-header></v-header>
     <v-sidebar></v-sidebar>
     <search></search>
+    <play></play>
     <router-view>
     </router-view>
 
@@ -14,13 +15,14 @@
 import header from "@/components/header"
 import sideBar from "@/components/sideBar"
 import search from "@/components/search"
-
+import play from "@/components/play"
 export default {
   name: "App",
   components:{
     "v-header":header,
     "v-sidebar":sideBar,
-    "search":search
+    "search":search,
+    "play":play
   }
 }
 </script> 

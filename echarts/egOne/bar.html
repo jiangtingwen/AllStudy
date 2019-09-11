@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts-en.common.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 900px;height:700px; display: inline-block"></div>
+    <div id="main1" style="width: 400px; height:300px;display: inline-block; position: absolute;top: 100px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        var optionCircle = {
+            series: [
+                {
+                    name: '销量',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '40%'],
+                    data: [
+                        { value: 5, name: '寸衫' },
+                        { value: 20, name: '羊毛衫' },
+                        { value: 36, name: '雪纺衫' },
+                        { value: 10, name: '裤子' },
+                        { value: 10, name: '高跟鞋' },
+                        { value: 20, name: '袜子' }
+                    ],
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,
+                                formatter: '{b} : {c} ({d}%)'
+                            },
+                            labelLine: { show: true }
+                        }
+                    }
+
+                }
+            ]
+        }
+        var optionCircle1 = {
+            series: [
+                {
+                    name: '寸衫',
+                    type: 'pie',
+                    radius: '55%',
+                    data: [
+                        { value: 28, name: '红色' },
+                        { value: 8, name: '橙色' },
+                        { value: 18, name: '黄色' },
+                        { value: 10, name: '绿色' },
+                        { value: 12, name: '青色' },
+                        { value: 20, name: '蓝色' },
+                        { value: 30, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        var optionCircle2 = {
+            series: [
+                {
+                    name: '羊毛衫',
+                    type: 'pie',
+                    radius: '55%',
+                    data: [
+                        { value: 5, name: '红色' },
+                        { value: 18, name: '橙色' },
+                        { value: 36, name: '黄色' },
+                        { value: 10, name: '绿色' },
+                        { value: 9, name: '青色' },
+                        { value: 19, name: '蓝色' },
+                        { value: 40, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        var optionCircle3 = {
+            series: [
+                {
+                    name: '雪纺衫',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 15, name: '红色' },
+                        { value: 4, name: '橙色' },
+                        { value: 30, name: '黄色' },
+                        { value: 10, name: '绿色' },
+                        { value: 19, name: '青色' },
+                        { value: 22, name: '蓝色' },
+                        { value: 10, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        var optionCircle4 = {
+            series: [
+                {
+                    name: '裤子',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 5, name: '红色' },
+                        { value: 10, name: '橙色' },
+                        { value: 33, name: '黄色' },
+                        { value: 14, name: '绿色' },
+                        { value: 19, name: '青色' },
+                        { value: 20, name: '蓝色' },
+                        { value: 30, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        var optionCircle5 = {
+            series: [
+                {
+                    name: '高跟鞋',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 5, name: '红色' },
+                        { value: 20, name: '橙色' },
+                        { value: 36, name: '黄色' },
+                        { value: 10, name: '绿色' },
+                        { value: 10, name: '青色' },
+                        { value: 20, name: '蓝色' },
+                        { value: 30, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        var optionCircle6 = {
+            series: [
+                {
+                    name: '袜子',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 10, name: '红色' },
+                        { value: 20, name: '橙色' },
+                        { value: 36, name: '黄色' },
+                        { value: 10, name: '绿色' },
+                        { value: 10, name: '青色' },
+                        { value: 20, name: '蓝色' },
+                        { value: 30, name: '紫色' }
+                    ],
+                    itemStyle:{
+                        normal:{
+                            label:{
+                                show:true,
+                                formatter:'{b} : {c} ({d}%)'
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '衣服销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["寸衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        var option1 = {
+            title: {
+                text: '不同颜色寸衫的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [28, 8, 18, 10, 12, 20, 30]
+            }]
+        };
+
+        var option2 = {
+            title: {
+                text: '不同颜色羊毛衫的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 18, 36, 10, 9, 19, 40]
+            }]
+        };
+        var option3 = {
+            title: {
+                text: '不同颜色雪纺衫的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [15, 4, 30, 10, 19, 22, 10]
+            }]
+        };
+        var option4 = {
+            title: {
+                text: '不同颜色裤子的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 10, 33, 14, 19, 20, 30]
+            }]
+        };
+        var option5 = {
+            title: {
+                text: '不同颜色高跟鞋的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20, 30]
+            }]
+        };
+        var option6 = {
+            title: {
+                text: '不同颜色袜子的销量'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [10, 20, 36, 10, 10, 20, 30]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+
+        myChart.setOption(option);
+        myChart1.setOption(optionCircle)
+        myChart.on('click', function (params) {
+            console.log(params.name)
+            if (params.name === '寸衫') {
+                myChart.setOption(option1, true)
+                myChart1.setOption(optionCircle1, true)
+            }
+            else if (params.name === '羊毛衫') {
+                myChart.setOption(option2, true)
+                myChart1.setOption(optionCircle2, true)
+            }
+            else if (params.name === '雪纺衫') {
+                myChart.setOption(option3, true)
+                myChart1.setOption(optionCircle3, true)
+            }
+            else if (params.name === '裤子') {
+                myChart.setOption(option4, true)
+                myChart1.setOption(optionCircle4, true)
+            }
+            else if (params.name === '高跟鞋') {
+                myChart.setOption(option5, true)
+                myChart1.setOption(optionCircle5, true)
+            }
+            else {
+                myChart.setOption(option6, true)
+                myChart1.setOption(optionCircle6, true)
+            }
+        })
+    </script>
+</body>
+
+</html>

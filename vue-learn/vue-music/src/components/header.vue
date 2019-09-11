@@ -1,55 +1,77 @@
 <template>
-  <div class="header">
-    <div class="header-icon" @click="leftEvent">
-      <slot name="left-icon"></slot>
+    <div class="tab">
+      <div class="left-icon" @click="leftEvent">
+          <i class="iconfont">&#xe61e;</i>
+      </div>
+      <div class="content-tab">
+         <router-link :class="router-link-exact-active" to="/my">
+             <span class="tab-link" >我</span>
+         </router-link>
+         <router-link class="tab_item" to="/listen">
+             <span class="tab-link">听</span>
+         </router-link>
+         <router-link class="tab_item" to="/look">
+             <span class="tab-link">看</span>
+         </router-link>
+         <router-link class="tab_item" to="/search">
+             <sapn class="tab-link">唱</sapn>
+         </router-link>
+      </div>
+      <div class="right-icon" @click="Add">
+          <i class="iconfont">&#xe601;</i>
+      </div>
     </div>
-    <div class="header-cont">
-      <slot name="content"></slot>
-    </div>
-    <div class="header-right">
-      <slot name="right-icon"></slot>
-    </div>
-  </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-  name: 'hd',
-  data () {
-    return {}
-  },
-  methods: {
-    leftEvent () {
-      this.$store.dispatch('setShowSidebar', true)
+    name:'header',
+    data () {
+            return {
+                
+            }
+        
+        },
+        methods:{
+            leftEvent(){
+                console.log('123')
+                this.$store.dispatch('setShowSidebar',true)
+            },
+            Add () {
+
+            }
+        }
     }
-  }
-}
+
 </script>
 
 <style lang="stylus" scoped>
-@import "../assets/css/function"
-.header
-  height px2rem(88px)
-  line-height px2rem(88px)
-  text-align center
-  display flex
-  align-items center
-  justify-content space-between
-  color #746ca8
-  font-size px2rem(30px)
-  &-icon
-    flex 0 0 px2rem(88px)
-    margin-top px2rem(6px)
-    cursor pointer
-    .icon
-      font-size px2rem(48px)
-  &-cont
-    flex 1
-    text-align center
-    font-size 18px
-    color #ffffff
-    font-weight 500
-    overflow hidden
-    text-overflow ellipsis
-    white-space nowrap
+@import '../assets/css/function'
+.tab
+    padding px2rem(50px) px2rem(30px)
+    display flex
+    z-index 100
+    .left-icon
+        flex 0 0 px2rem(50px)
+    .content-tab
+        flex 1
+        text-align center
+        .tab_item
+           text-decoration none
+           color #59d2d3
+           margin 0 20px
+        .router-link-exact-active 
+           text-decoration none
+           color #59d2d3
+           margin 0 20px
+           font-size 20px
+           text-shadow #ffffff 2px 0 10px
+
+    .right-icon
+        flex 0 0 px2rem(50px)
+
+
+
 </style>

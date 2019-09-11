@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div class="search">
+        <router-link to="/searchPage" tag="div" class="search">
             <i class="iconfont iconfont-search">&#xe600;</i>
             <input type="text" :placeholder="placeholder" class="box" v-model="query" ref="query">
-        </div>
+        </router-link>
     </div>
+    
 </template>
 
 <script>
 export default {
+    name:'search',
     props:{
         placeholder:{
             type:String,

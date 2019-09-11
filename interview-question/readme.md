@@ -48,3 +48,67 @@
       Set  indexOf includes map reduce
 
 ##q6  防抖节流函数原理
+
+##q10  get 和 post 请求在缓存方面的区别
+ get请求类似于查找的过程,用户获取数据,不用每次都与数据库连接,所以可以使用缓存
+ post不同,post一般做的是修改和删除数据的工作，所以必须与数据库交互,所以不能使用缓存
+ 因此get请求更适合于请求缓存
+ post是加密传输的
+
+##q11  url长度限制
+http协议并没有限制url的长度,是浏览器或者web浏览器做了url长度的限制,并且只针对与get请求做限制
+各大浏览器限制的get请求url的最大字节数
+  IE : 2803
+  Firefox:65536
+  Chrome:8182
+  Safari:80000
+  Opera:190000
+
+##q12  前端事件流
+   在DOM标准的事件模型中,事件流包括下面几个阶段
+   1.事件捕获阶段
+   2.处于目标阶段
+   3.事件冒泡阶段
+   addEventListener第三个参数为true捕获, false时冒泡,默认是false,
+   IE浏览器只支持冒泡
+## q13 图片的懒加载和预加载的区别
+预加载:提前加载图片,当用户需要查看图片时,直接从本地缓存中渲染
+懒加载:作为服务器的前端优化,减少请求或延迟请求(懒加载对服务器有一定的缓解压力作用，预加载会增加服务器的压力)
+##q14 js中的各种位置
+clientHeight:表示可视区域的高度,不包含boder和滚动条
+offsetHeight:表示可视区域的高度,包含border和滚动条
+scrollHeight:表示所有区域的宽度,包含因为滚动被隐藏的部分
+clientTop: 表示边框border的厚度,在未指定的情况下一般为0
+scrollTop:表示滚动后被隐藏的高度  
+##q15
+
+
+#q16 类的创建和继承
+
+##q17 click在ios手机上有300ms延迟,  原因及解决方案
+<!-- 将initial-scale 缩放 设为no-->
+1.<meta name="viewport" content="width=device-width, initial-scale=no">
+2.FastClick,其原理是:检测到toachend事件后,立刻发出模拟click事件,并把浏览器300ms之后的
+真实发出的事件阻断
+
+##q18  Cookie, sessionStorage  localStorage的区别
+  Cookie:数据始终在同源的http请求中携带(即使不需要),即cookie在浏览器和服务器之间来回传递,
+  而sessionStorage和localStorage不会自动把数据发给服务器,仅在本地保存.
+  Cookie还有路径(path)的概念,可以限制cookie只属于某个路径下,存储大小只有4k大小
+  
+  sessionStorage: 仅在当前浏览器窗口关闭前有效,不能长久保存,
+  localStorage:   在所有的同源窗口都是共享的,cookie也是在所有同源窗口中都是共享的
+                  localStorage的大小在5M左右
+
+## q21  浏览器的重绘和回流
+   浏览器渲染页面的过程
+   1. 解析HTML，生成DOM树,解析CSS，生成CSSOM树
+   2. 将DOM树和CSSOM树结合生成render树
+   3. 回流:根据生成的render树,进行回流,为了得到节点的几何信息
+   4. 重绘:根据render树和回流得到的信息，得到节点的绝对像素
+   5. 将像素发给GPU(浏览器上的一个引擎),展示在页面上
+##q22  vue子组件能否修改接收到的props里面的值
+   不能
+   为了保证数据的单项流动,便于数据的追踪,避免数据混乱
+
+

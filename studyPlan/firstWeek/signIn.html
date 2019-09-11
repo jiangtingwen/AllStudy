@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+    .content{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .form{
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+       display: flex;
+       flex-direction: column;
+    }
+    span{
+        margin-left: 12px;
+        margin-bottom: 5px;
+    }
+    input{
+        justify-content: flex-start;
+        margin-bottom: 16px;
+        margin-left: 12px;
+    }
+    #submit{
+        background-color: red;
+        height: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <form action="result.html" method="GET" class="form">
+            <span>userID:</span>
+            <input type="text" placeholder="请输入用户名"><br>
+            <span>passWord:</span> 
+            <input type="text" placeholder="请输入密码"><br>
+            <span>age:</span>
+            <input type="text" placeholder="请输入年龄"><br>
+            <span>wantPlay:</span>
+            <input type="text" placeholder="请输入想玩的职位">
+            <input type="submit" value="注册" id="submit">
+        </form>
+    </div>
+    <script>
+        window.onload = function() {
+            var oIpt = document.getElementsByTagName('input');
+            var sub = document.getElementById('submit');
+            sub.addEventListener('submit',setTimeout((value) => {
+                console.log(target.value)
+            },1000),false)
+            for(let i = 0; i < oIpt.length; i++){
+                oIpt[i].onclick = function() {
+                    this.placeholder = ''
+                }
+            }
+        }
+        
+    
+    
+    </script>
+</body>
+</html>

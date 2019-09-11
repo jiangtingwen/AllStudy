@@ -1,0 +1,13 @@
+{
+  "name": "count_down",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "live-server",
+    "stylus":"stylus --watch main.styl -o main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

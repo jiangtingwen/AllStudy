@@ -5,8 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .big{
+        width: 100%;
+        /* display: flex; */
+       /* display: table-cell */
+      
+        /* justify-content: space-between; */
+
+        
+    }
+    .left{
+        width: 100px;
+        height: 100px;
+       
+        display: inline-block;
+        /* justify-content: flex-start; */
+        /* float: left; */
+        /* position: absolute; */
+        /* left: 0; */
+
+        background: red;
+    }
+    .right{
+        width: 100px;
+         /* display: inline-block; */
+        position: absolute;
+       
+        height: 100px;
+        /* float: right; */
+        /* position: absolute; */
+        /* right: 0; */
+        background: green;
+}
+    
+    
+    
+    </style>
 </head>
 <body>
-    
+    <div class="big">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
 </body>
 </html>

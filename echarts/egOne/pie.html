@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts-en.common.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 600px; height: 700px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'))
+        myChart.setOption({
+            backgroundColor:'#2c343c',
+            // textStyle:{
+            //     color: 'rgba(255,255,255,0.8)',
+            // },
+            label:{
+                textStyle:{
+                    color:'rgba(255,255,255,0.3)'
+                }
+            },
+           labelLine:{
+               lineStyle:{
+                   color:'rgba(255,255,255,0.3)'
+               }
+           },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    boolean: true,
+                    radius: '50%',
+                    // area:'radius',
+                    data: [
+                        { value: 235, name: '视频广告',itemStyle:{color:'blue'} },
+                        { value: 274, name: '联盟广告', itemStyle:{color:'yellow'}},
+                        { value: 310, name: '邮件营销',itemStyle:{color:'green'} },
+                        { value: 335, name: '直接访问' ,itemStyle:{color:'red'}},
+                        { value: 400, name: '搜索引擎',itemStyle:{color:'white'} }
+                    ],
+                    roseType: 'radius',
+                    itemStyle: {
+                        // color:'yellow',
+                        emphasis: {
+                            
+                            shadowBlur: 400,
+                            shadowColor: 'rgba(0, 0, 0, 0.9)'
+                        }
+                    },
+                    visualMap:{
+                        show:false,
+                        min:80,
+                        max:600,
+                        inRange:{
+                            colorLightness:[0,1]
+                        }
+                    }
+
+                }
+            ]
+        })
+
+
+    </script>
+</body>
+
+</html>
