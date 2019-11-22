@@ -1,0 +1,51 @@
+
+  <div class="main_content">
+      <div class="list_left">
+        <ul>
+          <li class="title"></li>
+          <li class="checking">正在检查</li>
+          <li class="ready">请做准备</li>
+          <li class="waiting" >等待患者</li>
+        </ul>
+        {{for data}}
+        <ul data-type="{{:type}}">
+          <li class="title">{{:type}}</li>
+          <div class="check3">
+            {{for data}}
+            {{if callStatus === 1}}
+            <li class="patient" data-status="{{:callStatus}}" data-id="{{:queueNo}}" >{{:queueNo}}-{{:patientName}}</li>
+            {{/if}}
+            {{/for}}
+          </div>
+          <div class="waiting3">
+            {{for data}}
+            {{if callStatus === 2}}
+            <li class="patient" data-status="{{:callStatus}}" data-id="{{:queueNo}}" >{{:queueNo}}-{{:patientName}}</li>
+            {{/if}}
+            {{/for}}
+          </div>
+          <div class="waited3">
+            {{for data}}
+            {{if callStatus === 3}}
+            <li class="patient" data-status="{{:callStatus}}" data-id="{{:queueNo}}" >{{:queueNo}}-{{:patientName}}</li>
+            {{/if}}
+            {{/for}}
+          </div>
+        </ul>
+        {{/for }}
+      </div>
+        <div class="list_right">
+          <ul>
+            <li class="title">过号</li>
+            {{for data}}
+            {{for data}}
+            {{if callStatus === 4}}
+            <li class="patient">{{:queueNo}}-{{:patientName}}</li>
+            {{/if}}
+            {{/for}}
+            {{/for}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  

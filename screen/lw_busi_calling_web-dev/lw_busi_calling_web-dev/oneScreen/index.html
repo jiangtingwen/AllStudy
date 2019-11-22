@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>一级屏</title>
+  <script src="./lib/init.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="./lib/jsrender.js"></script>
+
+  <script id="interpolationtmpl" type="text/x-jsrender">
+    </script>
+  <script src="./lib/common.js"></script>
+  <script src="./lib/moment.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="header_content">
+        <div class="left">
+          <div class="left_content"><img src="./image/logo.png" alt=""></div>
+          <div class="host_title"><img src="./image/title.png" alt=""></div>
+        </div>
+        <span class="title"></span>
+        <div class="right">
+          <div class="right_content">
+            <p class="date hour"></p>
+            <p class="date"><span class="year"></span>&nbsp;<span class="week"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main"></div>
+    <div class="footer">
+      <marquee behavior="scroll" direction="left" scrollamount="10">
+        <span class="attention">温馨提示：<span id="alert">请过号患者到服务台重新取号等候叫号</span></span>
+      </marquee>
+    </div>
+    <audio id="play" autoplay src=""></audio>
+  </div>
+  <script>
+
+    var message = {
+      title: '超声科'
+    }
+    console.log(fun)
+    fun.longLink()
+    $('.title').text(fun.wordNum(message.title))
+    fun.time()
+  </script>
+</body>
+
+</html>

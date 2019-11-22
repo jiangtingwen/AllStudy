@@ -1,0 +1,54 @@
+<div class="main_content">
+  <div class="top">
+    <p class="top_first">
+      暂无检查人数
+    </p>
+    <p class="top_first">
+      暂无检查人数
+    </p>
+    <p class="top_first">
+      暂无检查人数
+    </p>
+
+  </div>
+  <div class="bottom">
+    {{for data}}
+    <div class="bottom_first bottom_list" data-type="{{:type}}">
+      <ul>
+        <li class="bottom_title" data-type="{{:type}}">{{:type}}</li>
+        <div class="check2">
+          {{for data}}
+          {{if callStatus === 1}}
+          <li class="bottom_list_content" data-status="{{:callStatus}}" data-id="{{:queueNo}}">
+            {{:queueNo}}-{{:patientName}}</li>
+          {{/if}}
+          {{/for}}
+        </div>
+        <div class="wait_room2">
+          {{for data}}
+          {{if callStatus === 2}}
+          <li class="bottom_list_content" data-status="{{:callStatus}}" data-id="{{:queueNo}}">
+            {{:queueNo}}-{{:patientName}}</li>
+          {{/if}}
+          {{/for}}
+        </div>
+        <div class="wait_home2">
+          {{for data}}
+          {{if callStatus === 3}}
+          <li class="bottom_list_content" data-status="{{:callStatus}}" data-id="{{:queueNo}}">
+            {{:queueNo}}-{{:patientName}}</li>
+          {{/if}}
+          {{/for}}
+        </div>
+        {{for data}}
+
+        {{if callStatus === 4}}
+        <li class="bottom_list_content pass" data-status="{{:callStatus}}" data-id="{{:queueNo}}">
+          {{:queueNo}}-{{:patientName}}</li>
+        {{/if}}
+        {{/for}}
+      </ul>
+    </div>
+    {{/for}}
+  </div>
+</div>

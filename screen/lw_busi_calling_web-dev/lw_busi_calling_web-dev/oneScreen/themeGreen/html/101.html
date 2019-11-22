@@ -1,0 +1,39 @@
+<div class="main_content">
+  <table>
+    <tbody id="a1">
+      <tr class="main_title">
+        <td class="check_house" style="border-left:0;">诊室</td>
+        <td>前往检查</td>
+        <td>诊室门口候诊</td>
+        <td style="border-right: 0;">大厅候诊(前3位)</td>
+      </tr>
+      {{for data}}
+      <tr class="check check1" data-tr="{{:type}}">
+        <td class="check_house" data-house="room">{{:type}}</td>
+        <td class="go_check" data-status="1">
+          {{for data}}
+          {{if callStatus === 1}}
+          <span  data-id="{{:queueNo}}" data-status="{{:callStatus}}">{{:queueNo}}-{{:patientName}}</span>
+          {{/if}}
+          {{/for}}
+        </td>
+        <td data-status="2" class="wait_room">
+          {{for data}}
+          {{if callStatus === 2}}
+          <span data-id="{{:queueNo}}">{{:queueNo}}-{{:patientName}}</span>
+          {{/if}}
+          {{/for}}
+        </td>
+        <td data-status="3" class="wait_home">
+            {{for data}}
+            {{if callStatus === 3}}
+            <span data-id="{{:queueNo}}">{{:queueNo}}-{{:patientName}}</span>
+            {{/if}}
+            {{/for}}
+          </td>
+      </tr>
+      {{/for}}
+    </tbody>
+  </table>
+
+</div>
