@@ -3,30 +3,30 @@ ul,li{
 }
 .main_content{
     width: 100%;
-    height: 96%;
-    margin-left: 1.25em;
-    margin-right: 1.25em;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .main_content .top{
     width: 100%;
     height: 38%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 .main_content .top p{
-    width: 98%;
+    width: 100%;
     height: 29%;
     background: linear-gradient(top, rgb(211,215,218), rgb(255,255,255), rgb(211,215,218));
     background: -ms-linear-gradient(top, rgb(211,215,218), rgb(255,255,255), rgb(211,215,218));
     background: -webkit-linear-gradient(top, rgb(211,215,218), rgb(255,255,255), rgb(211,215,218));
     background: -moz-linear-gradient(top, rgb(211,215,218), rgb(255,255,255), rgb(211,215,218));
-    border-radius: 0.5em;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 36px;
     font-weight: bold;
 }
 .main_content .top .top_first span span{
@@ -37,12 +37,12 @@ ul,li{
     width: 100%;
     height: 65%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .main_content .bottom .bottom_list{
     width: 18%;
     height: 100%;
-    margin-top: 0.5em;
+    margin-top: 8px;
 
 }
 .main_content .bottom .bottom_list ul{
@@ -51,7 +51,7 @@ ul,li{
 }
 .main_content .bottom .bottom_list li{
     width: 100%;
-    height:1.7em;
+    height:40px;
     border: 0.5px solid white;
     background-color: rgb(242,242,242);
     display: flex;
@@ -60,14 +60,15 @@ ul,li{
 }
 .main_content .bottom .bottom_list .bottom_title{
     font-weight: bold;
-    font-size: 2em;
-    border-radius: 0.5em 0.5em 0 0;
+    font-size: 32px;
+    height: 54px;
+    border-radius: 8px 8px 0 0;
     border-left: 0.5px solid rgb(253,179,212);
     border-top: 0.5px solid rgb(253,179,212);
     border-right:0.5px solid rgb(253,179,212) ;
 }
 .main_content .bottom .bottom_list .bottom_list_content {
-    font-size: 1.5em;
+    font-size: 24px;
 }
 .main_content .bottom .bottom_list .bottom_title{
     background: linear-gradient(top, rgb(255,99,172), rgb(255,164,207), rgb(255,99,172));

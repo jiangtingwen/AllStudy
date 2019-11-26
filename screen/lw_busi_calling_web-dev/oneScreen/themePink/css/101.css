@@ -1,50 +1,44 @@
 .main_content{
     width: 100%;
     height: 96%;
-    /* background-color:white; */
-    /* border-radius: 2em 2em 0 0; */
-    margin-left: 1.25em;
-    margin-right: 1.25em;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .main_content table{
     width: 100%;
-   
-    border-radius:2em 2em 0px 0px;
+    /* height: 100%; */
+    border-radius:34px 34px 0px 0px;
     border-collapse:separate;
     border-spacing: 0;
     border: 2px solid white;
-    
+    /* border-bottom: 1px solid white!important; */
 }
 .main_content table tr td{
-    border-right: 1px solid rgba(255, 255, 255, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6); 
 }
-.main_content table tr td:first-child{
-    border-left: 1px solid white;
+.main_content table tr td:nth-child(odd){
+    border-right: 1px solid rgba(255, 255, 255, 0.6);
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
 }
 .main_content table tr:first-child td:first-child{
-    border-top-left-radius: 0.8em;
+    border-top-left-radius: 30px;
 }
 .main_content table tr:first-child td:last-child{
-    border-top-right-radius: 0.8em;
+    border-top-right-radius: 30px;
 }
-/* .main_content table td{
-} */
+
 .main_content .main_title td{
     background-color: rgb(210,214,217);
-    font-size: 2.25em;
+    font-size: 36px;
     font-weight: bold;
-    height: 2em;
     color: black;
+    height: 70px;
+
 }
-/* .main_content .main_title .check_house{
-} */
 .main_content .check{
-    font-size: 1.6em;
+    font-size: 26px;
     color: white;
 }
-/* .main_content .check td{
-} */
 .main_content .check .go_check{
     color: rgb(255,226,31)!important;
 }
@@ -54,10 +48,11 @@
 }
 .main_content .check1 td{
     background:rgba(248,131,186,1);
-    height: 2.5em;
+    height: 66px;
 }
 .main_content .check2 td{
     background-color: rgba(233,90,157,1);
+    height: 66px;
 }
 .main_content table td{
     text-align: center;

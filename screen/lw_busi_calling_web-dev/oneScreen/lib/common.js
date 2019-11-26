@@ -1,10 +1,6 @@
 
 var fun = {
-  renderer: function (data) {
-    var myTmpl = $.templates("#interpolationtmpl");
-    var html = myTmpl.render({ "data": data });
-    $("#main").html(html);
-  },
+  data:{},
   longLink: function () {//长链接
     var socket;
     if (!window.WebSocket) {
@@ -20,11 +16,11 @@ var fun = {
             fun.jqAjax(data1.uuid)
           } else if (json.data.type === '2') {
             console.log(json.data.data, 'hhhhhh')
-            const data2 = json.data.data
-            // for(var i = 0; i < data2.length; i++) {
-            //   console.log(data2[i],'sssssssssssssss') 
-            // }
-            fun.renderer(data2)
+            var data2 = json.data.data
+            console.log(globalConfig,'我是配置')
+            var myTmpl = $.templates(resTxt);
+            var html = myTmpl.render({ "data": data2 });
+            $("#main").html(html);      
             fun.initScreen(screenConfig)
             fun.verticalScreen(screenConfig)
             fun.verticalPartScreen(screenConfig)
@@ -59,9 +55,14 @@ var fun = {
 
   // 切换主题方法
   theme: function (theme, mode) {
-    console.log($('.main_content'), '我是加载前')
     $('.mode').remove()
-    $("#interpolationtmpl").load(`./${theme}/html/${mode}.html`, function () {
+    // console.log(data2)
+    $("#interpolationtmpl").load(`./${theme}/html/${mode}.html`, function (responstTxt) {
+      resTxt = responstTxt
+      // console.log(resTxt)
+      var myTmpl = $.templates(resTxt);
+      var html = myTmpl.render({ "data": fun.data });
+      $("#main").html(html);
       fun.loadjscssfile(`./${theme}/css/total.css`, 'css')
       fun.loadjscssfile(`./${theme}/css/${mode}.css`, 'css')
     });
@@ -107,9 +108,13 @@ var fun = {
         uuid: id
       },
       success: function (res) {
-        fun.theme(res.data.data.screenConfig.screenTheme, res.data.data.screenConfig.screenLayot)
         console.log(res, 'gggggggggggggg')
         screenConfig = res.data.data.screenConfig
+        globalConfig = res.data.data.globalConfig
+        fun.theme(screenConfig.screenTheme, screenConfig.screenLayot)
+        $('.title').text(fun.wordNum(screenConfig.screenTitle))
+        $('.left_content').find('img').attr("src",globalConfig.hospitalLogoUrl)
+        $('.host_title').text(globalConfig.hospitalName)
       }
     })
   },
@@ -171,11 +176,8 @@ var fun = {
   lacePartAjax: function (id, status) {
     //  根据传进来的id拿到的li标签
     var curLi = $('.list_left').find('ul').find('li[data-id="' + id + '"]')
-    console.log(curLi, '我是li标签')
     var curDiv = $(curLi).parent('div')
-    console.log(curDiv, '我是div标签')
     var curUl = $(curDiv).parent('ul')
-    console.log(curUl, '我是ul标签')
     var num1 = screenConfig.waitedNumber + 1
     var num2 = screenConfig.waitingNumber + 1
     // 正叫移动
@@ -190,21 +192,38 @@ var fun = {
       $(curUl).find('.waiting3').prepend(curLi)
       $(curDiv).children('li:lt(' + num1 + ')').show()
     }
-
-
   },
   // 根据配置数据初始化显示101模板客户端
   initScreen: function (config) {
     var checkNumber = config.checkingNumber - 1
     var waitingNumber = config.waitingNumber - 1
     var waitedNumber = config.waitedNumber - 1
+    var checkNumber1 = config.checkingNumber
+    var waitingNumber1 = config.waitingNumber
+    var waitedNumber1 = config.waitedNumber
+    // console.log(data2,'咔咔咔咔咔咔')
     // 隐藏过号一栏
     $("tr[data-tr='过号']").css('display', 'none')
     // console.log(passTr)
     // 只显示后台配置的检查人数的前checkNumber条,以此类推
-    $('tr').find('.go_check span:gt(' + checkNumber + ')').css('display', 'none')
-    $('tr').find('.wait_room span:gt(' + waitingNumber + ')').css('display', 'none')
-    $('tr').find('.wait_home span:gt(' + waitedNumber + ')').css('display', 'none')
+    if(checkNumber1 === 0) {
+      $('.checking_house').css('display','none')
+      $('.go_check').css('display','none')
+    }else{
+      $('tr').find('.go_check span:gt(' + checkNumber + ')').css('display', 'none')
+    }
+    if(waitingNumber1 === 0) {
+      $('.waiting_house').css('display','none')
+      $('.wait_room').css('display','none')
+    }else{
+      $('tr').find('.wait_room span:gt(' + waitingNumber + ')').css('display', 'none')
+    }
+    if(waitedNumber1 === 0) {
+      $('.waited_house').css('display','none')
+      $('.wait_home').css('display','none')  
+    }else{
+      $('tr').find('.wait_home span:gt(' + waitedNumber + ')').css('display', 'none')
+    }
   },
   // 根据配置数据初始化显示102模板客户端
   verticalScreen: function (config) {
@@ -218,38 +237,10 @@ var fun = {
     var passNumber = config.loseNumber - 1
     var waitHome = config.waitedNumber - 1
     var pass = config.loseNumber
-    // 当后台配置数据后,服务器没有相应数据,生成空白标签（为了好看）
-    var waitedDiv = $('.bottom_list').find('ul').find('.wait_home2')
     var sumDiv = $('.bottom_list').slice(0, 3)
     $('.bottom_list').find('.check2  li:gt(' + checkNumber + ')').css('display', 'none')
     $('.bottom_list').find('.wait_room2  li:gt(' + waitRoom + ')').css('display', 'none')
     $('.bottom_list').find('.wait_home2  li:gt(' + waitHome + ')').css('display', 'none')
-    // console.log('sum:',sum)
-    // var lis = $(sumDiv).find('ul').find('li')
-    // console.log(lis)
-
-
-    // $(screen)
-    for (var i = 0; i < sumDiv.length; i++) {
-      var result = $(sumDiv).filter(function(value){
-       return ( $(value).find('ul').find('li').css('display')!= 'none' )
-          
-        
-    })
-    // console.log(result)
-    // var arr = []
-    // arr.push(result)
-    // console.log(arr)
-    //   if( $($(result)[i]).find('ul').find('li').length < sum + 1  ){
-    //     for(j = 0; j < sum + 1 - $($(result)[i]).find('ul').find('li').length; j++) {
-    //       $(sumDiv[i]).find('ul').find('.wait_home2').after("<li></li>")
-    //     }
-    //   }
-  
-    // console.log(result)  
-        
-      }
- 
     if (checkNumber1 === 0) {
       $('.bottom_list').find('.check2 li').css('display', 'none')
     }
@@ -264,6 +255,23 @@ var fun = {
     } else {
       $('.pass:gt(' + passNumber + ')').css('display', 'none')
     }
+    // 当后台配置数据后,服务器没有相应数据,生成空白标签（为了好看）
+    for(var i = 0; i < sumDiv.length; i++) {
+      // 对每一个盒子下面的li标签进行过滤,获得被隐藏的li标签的长度
+      var l = $(sumDiv[i]).find('ul').find('li').filter(function(){
+        return $(this).css('display') === 'none'
+      }).length
+      // 获得每个盒子下面实际渲染到页面的标签的个数
+      sum1 = $(sumDiv[i]).find('ul').find('li').length - l - 1
+      console.log(sum1,'实际')
+      // 判断,如果实际渲染到页面的标签的个数小于检查,候诊，等待的个数之和,循环添加不足的标签
+      if(sum1 < sum) {
+        for(var j = 0; j < sum - sum1; j++) {
+            $(sumDiv[i]).find('ul').find('.wait_home2').append("<li></li>")
+        }
+      }
+    } 
+ 
     $('.top_first:gt(2)').css('display', 'none')
   },
 
@@ -289,7 +297,7 @@ var fun = {
           // 超过后台配置的检查等待候诊过号的配置的排队号则隐藏
           $('.list_left').find('ul').find('.check3 li:gt(' + checkNumber + ')').css('display', 'none')
           // 让左边li的高度与右边检查的状态的盒子的高度相对应
-          var checkingHeight = $(checkDiv[0]).height()
+          var checkingHeight = $(checkDiv[0]).height() - 1
           $('.checking').css('height', '' + checkingHeight + '')
         }
       }
@@ -304,7 +312,7 @@ var fun = {
         for (var d = 0; d <= waitingNumber1 - $(waitingDiv[j]).find('li').length; d++) {
           $(waitingDiv[j]).append("<li></li>")
           $('.list_left').find('ul').find('.waiting3 li:gt(' + waitingNumber + ')').css('display', 'none')
-          var readyHeight = $(waitingDiv[0]).height()
+          var readyHeight = $(waitingDiv[0]).height() - 2
           $('.ready').css('height', '' + readyHeight + '')
         }
       }
@@ -319,7 +327,7 @@ var fun = {
         for (var a = 0; a <= waitedNumber1 - $(waitedDiv[k]).find('li').length; a++) {
           $(waitedDiv[k]).append("<li><li>")
           $('.list_left').find('ul').find('.waited3 li:gt(' + waitedNumber + ')').css('display', 'none')
-          var waitedHeight = $(waitedDiv[0]).height()
+          var waitedHeight = $(waitedDiv[0]).height() 
           $('.waiting').css('height', '' + waitedHeight + '')
         }
 
